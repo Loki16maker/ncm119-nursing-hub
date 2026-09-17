@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "tag": "Foundations",
+    "front": "What is the core definition of Nursing Leadership?",
+    "back": "A dynamic interpersonal influence process directed toward facilitating individuals, groups, or interprofessional teams to set, commit to, and achieve shared healthcare goals. It is an informal or formal achieved position that is part of every Registered Nurse's (RN) standard duty."
+  },
+  {
+    "id": 2,
+    "tag": "Foundations",
+    "front": "What is the essence of Nursing Management?",
+    "back": "Getting work done through others by achieving organizational objectives systematically, efficiently, and within fiscal limits through formal legitimate authority (POSDC: Planning, Organizing, Staffing, Directing, Controlling)."
+  },
+  {
+    "id": 3,
+    "tag": "Competencies",
+    "front": "What are the 3 essential leadership competencies in nursing?",
+    "back": "1. DIAGNOSE (Cognitive ability to understand the situation)\n2. ADAPT (Behavioral ability to adjust style and resources)\n3. COMMUNICATE (Process ability to listen and convey shared meaning)."
+  },
+  {
+    "id": 4,
+    "tag": "Bennis Pillars",
+    "front": "Warren Bennis: Management of Attention",
+    "back": "The ability to mobilize the focus, energy, and commitment of followers through a compelling, clear, and unambiguous vision or goal (e.g., zero hospital-acquired infections)."
+  },
+  {
+    "id": 5,
+    "tag": "Bennis Pillars",
+    "front": "Warren Bennis: Management of Meaning",
+    "back": "The capacity to make ideas, values, and organizational goals tangible, relatable, and clear through storytelling, dialogue, and clear clinical metaphors."
+  },
+  {
+    "id": 6,
+    "tag": "Bennis Pillars",
+    "front": "Warren Bennis: Management of Trust",
+    "back": "Inspiring reliability, psychological safety, and constancy through unwavering ethical principles, fairness, and predictability under crisis."
+  },
+  {
+    "id": 7,
+    "tag": "Bennis Pillars",
+    "front": "Warren Bennis: Management of Self",
+    "back": "Recognizing one's own strengths and limitations, nurturing talents, accepting constructive criticism without defensiveness, and maintaining emotional composure."
+  },
+  {
+    "id": 8,
+    "tag": "Lewin Styles",
+    "front": "Autocratic (Authoritarian) Leadership: Hallmark & Clinical Use",
+    "back": "High control, little freedom, leader decides alone, high activity, very efficient. Medically mandatory during acute life-threatening emergencies (Code Blue, disaster triage, fire)."
+  },
+  {
+    "id": 9,
+    "tag": "Lewin Styles",
+    "front": "Democratic (Participative) Leadership: Hallmark & Clinical Use",
+    "back": "Moderate control, moderate freedom, shared decision-making, creative high-quality output, less time-efficient. Ideal for unit protocol revisions, scheduling, and quality improvement committees."
+  },
+  {
+    "id": 10,
+    "tag": "Lewin Styles",
+    "front": "Laissez-Faire (Permissive) Leadership: Hallmark & Clinical Use",
+    "back": "Little/no control, maximum freedom, abdicated decisions, highly inefficient. Only appropriate for self-directed expert specialists (Clinical Nurse Specialists, doctoral nurse researchers)."
+  },
+  {
+    "id": 11,
+    "tag": "Managerial Grid",
+    "front": "Blake & Mouton: Team Management (9,9)",
+    "back": "High concern for production/task AND high concern for people. The optimal gold standard in Magnet Hospitals fostering interdependence, mutual trust, and clinical excellence."
+  },
+  {
+    "id": 12,
+    "tag": "Motivation",
+    "front": "Maslow's Prepotency Principle",
+    "back": "Lower-level deficiency needs (Physiological, Safety) must be substantially satisfied before higher-level growth needs (Belongingness, Esteem, Self-Actualization) can actively motivate behavior."
+  },
+  {
+    "id": 13,
+    "tag": "Motivation",
+    "front": "Herzberg's Hygiene Factors (Extrinsic)",
+    "back": "Salary, working conditions, company policies, supervision, peer relations. Crucial axiom: Hygiene factors do NOT motivate; their presence merely prevents dissatisfaction (neutral state)."
+  },
+  {
+    "id": 14,
+    "tag": "Motivation",
+    "front": "Herzberg's Motivator Factors (Intrinsic)",
+    "back": "Achievement, recognition, meaningful work, clinical responsibility, autonomy, professional advancement. These are the SOLE drivers of genuine job satisfaction and peak performance."
+  },
+  {
+    "id": 15,
+    "tag": "Motivation",
+    "front": "McClelland's Three Acquired Needs",
+    "back": "1. Need for Achievement (nAch) - Excel in challenging clinical tasks\n2. Need for Affiliation (nAff) - Warm, harmonious interpersonal relationships\n3. Need for Power (nPower) - Directing and influencing others (Institutional vs Personal)."
+  },
+  {
+    "id": 16,
+    "tag": "Emotional Intelligence",
+    "front": "Daniel Goleman: What distinguishes leadership 'stars'?",
+    "back": "Leadership stars consciously address the impact of people's feelings on the team's emotional reality. They master Self-Awareness, Self-Regulation, Motivation, Empathy, and Social Skills."
+  },
+  {
+    "id": 17,
+    "tag": "Emotional Intelligence",
+    "front": "Self-Regulation in Clinical Practice",
+    "back": "Controlling disruptive impulses, staying calm when physicians shout or during crisis, and responding constructively rather than reacting defensively."
+  },
+  {
+    "id": 18,
+    "tag": "Situational Leadership",
+    "front": "Hersey-Blanchard: Follower Readiness R1 & Optimal Style",
+    "back": "R1: Low Competence, Low Willingness/Insecure (Novice Nurse) -> Style S1: TELLING / DIRECTING (High Task, Low Relationship; explicit instructions, close supervision)."
+  },
+  {
+    "id": 19,
+    "tag": "Situational Leadership",
+    "front": "Hersey-Blanchard: Follower Readiness R2 & Optimal Style",
+    "back": "R2: Low Competence, High Willingness/Enthusiastic (Eager New Grad) -> Style S2: SELLING / COACHING (High Task, High Relationship; guidance plus encouragement)."
+  },
+  {
+    "id": 20,
+    "tag": "Situational Leadership",
+    "front": "Hersey-Blanchard: Follower Readiness R3 & Optimal Style",
+    "back": "R3: High Competence, Low/Variable Willingness/Hesitant (Burned-out Veteran) -> Style S3: PARTICIPATING / SUPPORTING (Low Task, High Relationship; shared decisions)."
+  },
+  {
+    "id": 21,
+    "tag": "Situational Leadership",
+    "front": "Hersey-Blanchard: Follower Readiness R4 & Optimal Style",
+    "back": "R4: High Competence, High Willingness/Confident (Expert CNS) -> Style S4: DELEGATING (Low Task, Low Relationship; full autonomy, minimal oversight)."
+  },
+  {
+    "id": 22,
+    "tag": "Modern Leadership",
+    "front": "Transformational Leadership: The 'Four I's'",
+    "back": "1. Idealized Influence (Moral role modeling)\n2. Inspirational Motivation (Vivid vision)\n3. Intellectual Stimulation (Challenging outdated traditions)\n4. Individualized Consideration (Mentorship)."
+  },
+  {
+    "id": 23,
+    "tag": "Modern Leadership",
+    "front": "Transactional Leadership: Hallmark Mechanism",
+    "back": "Contingent rewards ('quid pro quo') and management-by-exception (intervening only when errors occur). Focuses on day-to-day maintenance and maintaining the status quo."
+  },
+  {
+    "id": 24,
+    "tag": "Modern Leadership",
+    "front": "Robert Greenleaf: Servant Leadership",
+    "back": "The leader chooses to serve first and lead second. Ensures staff nurses' emotional, clinical, and developmental needs are met so they can provide exemplary patient care."
+  },
+  {
+    "id": 25,
+    "tag": "Followership",
+    "front": "Robert Kelley: Exemplary (Star) Follower",
+    "back": "Combines High Independent Critical Thinking with High Active Engagement. Proactively identifies safety risks, thinks independently, and arrives with constructive solutions."
+  },
+  {
+    "id": 26,
+    "tag": "Followership",
+    "front": "Concept of 'Managing Up'",
+    "back": "The conscious, ethical process of working collaboratively with one's supervisor to achieve the best possible outcomes for patients, the nurse, the manager, and the healthcare facility."
+  },
+  {
+    "id": 27,
+    "tag": "Management Science",
+    "front": "Frederick Winslow Taylor: Scientific Management",
+    "back": "Focuses on time-and-motion studies, standardization of equipment and procedures, and economic incentives to maximize efficiency and eliminate wasted physical motion."
+  },
+  {
+    "id": 28,
+    "tag": "Management Science",
+    "front": "Douglas McGregor: Theory X vs. Theory Y",
+    "back": "Theory X assumes workers inherently dislike work and need coercion, surveillance, and punishment. Theory Y assumes workers naturally enjoy work, seek responsibility, and thrive with autonomy and development."
+  },
+  {
+    "id": 29,
+    "tag": "Management Science",
+    "front": "Henri Fayol: 5 Management Functions (POSDC)",
+    "back": "Planning (forecasting & budgets), Organizing (structuring & assigning), Staffing (recruiting & scheduling), Directing/Leading (guiding & motivating), Controlling (evaluating & quality auditing)."
+  },
+  {
+    "id": 30,
+    "tag": "Mintzberg Roles",
+    "front": "Mintzberg: Decisional Roles in Nursing",
+    "back": "Entrepreneur (initiating quality improvement), Disturbance Handler (resolving crises/fights), Resource Allocator (budgets/staffing ratios), Negotiator (shift trades/contracts)."
+  },
+  {
+    "id": 31,
+    "tag": "Toxic Management",
+    "front": "The 'Overly Nice' Manager: Fatal Flaw",
+    "back": "Desperate to please everyone, refuses to establish boundaries, avoids conflict, approves conflicting requests, fails to discipline slackers, and drains the departmental budget."
+  },
+  {
+    "id": 32,
+    "tag": "Toxic Management",
+    "front": "The 'Afraid to Decide' Manager: Fatal Flaw",
+    "back": "Paralyzed by indecision, sets ambiguous expectations, and treats negligent staff identically to exemplary nurses in the false name of 'fairness', destroying merit-based morale."
+  }
+]

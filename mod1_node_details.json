@@ -1,0 +1,50 @@
+{
+  "m1-root": {
+    "title": "NCM 119 Module 1: Leadership vs. Management",
+    "desc": "Foundational curriculum covering leadership competencies, classical behavioral styles, motivation models, emotional intelligence, situational contingency frameworks, followership dynamics, management science, and Mintzberg's managerial roles."
+  },
+  "m1-comp": {
+    "title": "Core Leadership Competencies & Bennis ATMS",
+    "desc": "The 3 vital competencies are Diagnose (cognitive situational reading), Adapt (behavioral flexibility), and Communicate (two-way feedback). Warren Bennis's 90-leader study identified 4 pillars: Attention (vision), Meaning (communication), Trust (integrity), and Self (self-awareness)."
+  },
+  "m1-diff": {
+    "title": "Definitive Boundary: Leadership vs. Management",
+    "desc": "Leadership is an informal or formal achieved position based on interpersonal influence and shared meaning (everyone's duty). Management is an assigned institutional position based on legitimate authority, responsible for budgets, hiring, firing, and appraisals (POSDC)."
+  },
+  "m1-lewin": {
+    "title": "Lewin's Classical Behavioral Styles",
+    "desc": "Autocratic (high control, unilateral decisions; essential in Code Blue/disasters), Democratic (shared control, consensus; optimal for unit policy revisions), and Laissez-Faire (permissive, abdicated decisions; only for self-directed doctoral researchers)."
+  },
+  "m1-grid": {
+    "title": "Task vs. Relationship: Blake & Mouton Grid",
+    "desc": "Balances concern for production/task with concern for people. Ranges from (1,1) Impoverished to (1,9) Country Club, (9,1) Authority-Compliance, (5,5) Middle-of-the-Road, up to (9,9) Team Management—the gold standard in Magnet Hospitals."
+  },
+  "m1-mot": {
+    "title": "Motivation Theories: Maslow, Herzberg, McClelland",
+    "desc": "Maslow: Prepotency Principle (Physiological -> Safety -> Social -> Esteem -> Self-Actualization). Herzberg: Hygiene factors (salary, conditions) only prevent dissatisfaction; only Motivators (autonomy, achievement) produce excellence. McClelland: nAch, nAff, nPower."
+  },
+  "m1-ei": {
+    "title": "Emotional Intelligence (Goleman)",
+    "desc": "Distinguishes leadership 'stars' through conscious attunement to team emotional reality. Five pillars: Self-Awareness, Self-Regulation (clinical composure), Motivation, Empathy (perceptive listening), and Social Skills (conflict resolution)."
+  },
+  "m1-sit": {
+    "title": "Situational & Contingency Models",
+    "desc": "Rejects one-size-fits-all. Hersey & Blanchard match Follower Readiness (R1-R4) to Leadership Styles (S1 Telling, S2 Selling, S3 Supporting, S4 Delegating). Fiedler Contingency uses the LPC scale and situational favorability."
+  },
+  "m1-trans": {
+    "title": "Transformational vs. Transactional & Servant Leadership",
+    "desc": "Transformational inspires via the 'Four I's' (Idealized Influence, Inspirational Motivation, Intellectual Stimulation, Individualized Consideration). Transactional uses contingent rewards and management-by-exception. Servant Leadership (Greenleaf) serves first and leads second."
+  },
+  "m1-fol": {
+    "title": "Followership Dynamics & 'Managing Up'",
+    "desc": "Leadership is reciprocal with followership. Robert Kelley: Exemplary/Star followers combine high critical thinking with high active engagement. 'Managing Up' is the conscious, ethical practice of collaborating with your nurse manager for shared clinical success."
+  },
+  "m1-mgmt": {
+    "title": "Management Science: Taylor, Fayol, & McGregor",
+    "desc": "Taylor's Scientific Management uses time-and-motion studies for procedural efficiency. Fayol defines 5 administrative functions: POSDC (Planning, Organizing, Staffing, Directing, Controlling). McGregor contrasts Theory X (suspicion, control) with Theory Y (trust, empowerment)."
+  },
+  "m1-roles": {
+    "title": "Mintzberg's 10 Roles & Toxic Management Styles",
+    "desc": "Roles across 3 spheres: Interpersonal (Figurehead, Leader, Liaison), Informational (Monitor, Disseminator, Spokesperson), Decisional (Entrepreneur, Disturbance Handler, Resource Allocator, Negotiator). 5 Toxic Styles: Know-It-All, Emotionally Remote, Purely Mean, Overly Nice, Afraid to Decide."
+  }
+}

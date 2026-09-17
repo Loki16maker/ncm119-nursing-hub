@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NCM 119: Nursing Leadership & Management Hub | Multi-Module Learning Suite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>NCM 119: Nursing Leadership & Management Hub | Mobile & Tablet Learning Suite</title>
+  
+  <!-- PWA & Mobile Device Metas -->
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NCM 119 Hub">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icon-192.png">
+
   <style>
     :root {
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
+
       --bg-primary: #0f172a;
       --bg-secondary: #1e293b;
-      --bg-card: rgba(30, 41, 59, 0.85);
+      --bg-card: rgba(30, 41, 59, 0.88);
       --bg-card-hover: rgba(51, 65, 85, 0.95);
       --border-color: rgba(148, 163, 184, 0.2);
       --border-focus: #0ea5e9;
@@ -21,11 +37,11 @@
       --accent-danger: #ef4444;
       --accent-purple: #8b5cf6;
       --card-radius: 14px;
-      --btn-radius: 8px;
+      --btn-radius: 10px;
       --shadow-sm: 0 2px 5px rgba(0,0,0,0.25);
       --shadow-md: 0 8px 20px rgba(0,0,0,0.35);
       --shadow-lg: 0 16px 36px rgba(0,0,0,0.45);
-      --glass-blur: blur(14px);
+      --glass-blur: blur(16px);
       --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-normal: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -33,7 +49,7 @@
     [data-theme="light"] {
       --bg-primary: #f8fafc;
       --bg-secondary: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-card: rgba(255, 255, 255, 0.96);
       --bg-card-hover: rgba(241, 245, 249, 0.98);
       --border-color: rgba(203, 213, 225, 0.85);
       --border-focus: #0284c7;
@@ -51,137 +67,161 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       background-color: var(--bg-primary);
       color: var(--text-primary);
       min-height: 100vh;
+      min-height: -webkit-fill-available;
       display: flex;
       flex-direction: column;
       line-height: 1.75;
       transition: background-color var(--transition-normal), color var(--transition-normal);
       overflow-x: hidden;
+      touch-action: manipulation;
     }
 
-    /* Top Sticky Header */
+    /* Top Sticky Header with Notch & Safe Area Insets */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: var(--bg-card);
       backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid var(--border-color);
-      padding: 0.75rem 1.5rem;
+      padding: calc(0.65rem + var(--sat)) calc(1.25rem + var(--sar)) 0.65rem calc(1.25rem + var(--sal));
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .brand-container {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      min-width: 0;
     }
 
     .brand-icon {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
-      border-radius: 12px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 800;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
     }
 
+    .brand-titles {
+      min-width: 0;
+    }
+
     .brand-titles h1 {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: -0.01em;
-      line-height: 1.3;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .brand-titles p {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .header-controls {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      flex-shrink: 0;
     }
 
     .score-badge {
       background: rgba(16, 185, 129, 0.15);
       border: 1px solid rgba(16, 185, 129, 0.35);
       color: var(--accent-secondary);
-      padding: 0.35rem 0.75rem;
+      padding: 0.3rem 0.65rem;
       border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      white-space: nowrap;
     }
 
     .theme-toggle-btn {
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       transition: all var(--transition-fast);
+      touch-action: manipulation;
     }
 
-    .theme-toggle-btn:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-1px);
+    .theme-toggle-btn:active {
+      transform: scale(0.94);
     }
 
     /* ==========================================================================
-       PERSISTENT COURSE MODULE SWITCHER BAR
+       PERSISTENT COURSE MODULE SWITCHER BAR (TOUCH SCROLLER)
        ========================================================================== */
     .module-selector-bar {
-      background: linear-gradient(90deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
       border-bottom: 2px solid var(--border-color);
-      padding: 0.65rem 1.5rem;
+      padding: 0.55rem calc(1rem + var(--sar)) 0.55rem calc(1rem + var(--sal));
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 0.85rem;
       overflow-x: auto;
-      scrollbar-width: thin;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .module-selector-bar::-webkit-scrollbar {
+      display: none;
     }
 
     .module-bar-title {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
+      gap: 0.4rem;
+      font-size: 0.74rem;
       font-weight: 800;
       color: var(--accent-primary);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .pulse-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       background-color: var(--accent-secondary);
       border-radius: 50%;
       box-shadow: 0 0 8px var(--accent-secondary);
@@ -197,27 +237,28 @@
     .module-nav-grid {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      flex-shrink: 0;
     }
 
     .mod-btn {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      padding: 0.5rem 0.95rem;
+      padding: 0.45rem 0.85rem;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.55rem;
       text-align: left;
       transition: all var(--transition-fast);
       white-space: nowrap;
+      min-height: 44px;
+      touch-action: manipulation;
     }
 
-    .mod-btn:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
+    .mod-btn:active {
+      transform: scale(0.96);
     }
 
     .mod-btn.active {
@@ -229,9 +270,9 @@
     .mod-btn-tag {
       background: rgba(148, 163, 184, 0.15);
       color: var(--text-primary);
-      padding: 0.2rem 0.45rem;
+      padding: 0.2rem 0.4rem;
       border-radius: 5px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.04em;
     }
@@ -247,13 +288,13 @@
     }
 
     .mod-btn-name {
-      font-size: 0.86rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-primary);
     }
 
     .mod-btn-status {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       color: var(--accent-secondary);
       display: flex;
@@ -265,14 +306,15 @@
       color: var(--accent-warning);
     }
 
-    /* Main Navigation Tabs */
+    /* Main Desktop Navigation Tabs (Visible on >= 769px) */
     nav.nav-tabs-bar {
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border-color);
-      padding: 0.35rem 1.5rem;
+      padding: 0.35rem calc(1.25rem + var(--sar)) 0.35rem calc(1.25rem + var(--sal));
       display: flex;
-      gap: 0.5rem;
+      gap: 0.45rem;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
     }
 
@@ -280,16 +322,18 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 0.65rem 1.1rem;
+      padding: 0.65rem 1rem;
       border-radius: var(--btn-radius);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       white-space: nowrap;
       transition: all var(--transition-fast);
+      min-height: 44px;
+      touch-action: manipulation;
     }
 
     .tab-btn:hover {
@@ -303,13 +347,65 @@
       box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
     }
 
+    /* Mobile Bottom Navigation Bar (Visible on <= 768px: iPhone & Android) */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2000;
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-top: 1px solid var(--border-color);
+      padding: 0.35rem calc(0.35rem + var(--sar)) calc(0.45rem + var(--sab)) calc(0.35rem + var(--sal));
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.18rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.25rem 0.4rem;
+      border-radius: 8px;
+      cursor: pointer;
+      min-width: 48px;
+      min-height: 46px;
+      transition: all var(--transition-fast);
+      touch-action: manipulation;
+    }
+
+    .mobile-nav-item:active {
+      transform: scale(0.92);
+    }
+
+    .mobile-nav-item .nav-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .mobile-nav-item.active {
+      color: var(--accent-primary);
+      background: rgba(14, 165, 233, 0.12);
+    }
+
     /* Main Content Area */
     main {
       flex: 1;
       max-width: 1400px;
       width: 100%;
       margin: 0 auto;
-      padding: 1.75rem 1.25rem;
+      padding: 1.5rem calc(1rem + var(--sar)) 1.5rem calc(1rem + var(--sal));
     }
 
     .tab-panel {
@@ -330,10 +426,11 @@
     .glass-card {
       background: var(--bg-card);
       backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 1.75rem;
-      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
       box-shadow: var(--shadow-sm);
     }
 
@@ -341,13 +438,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .card-title {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -357,9 +456,9 @@
 
     .badge {
       display: inline-block;
-      padding: 0.25rem 0.65rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -373,42 +472,41 @@
     /* Lesson Layout Grid */
     .lesson-grid {
       display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 1.75rem;
+      grid-template-columns: 310px 1fr;
+      gap: 1.5rem;
       align-items: start;
-    }
-
-    @media (max-width: 960px) {
-      .lesson-grid { grid-template-columns: 1fr; }
     }
 
     .unit-sidebar {
       position: sticky;
-      top: 5rem;
+      top: 5.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.45rem;
+      max-height: calc(100vh - 7rem);
+      overflow-y: auto;
     }
 
     .unit-nav-item {
-      padding: 0.85rem 1rem;
+      padding: 0.8rem 1rem;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--btn-radius);
       cursor: pointer;
       text-align: left;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-muted);
       transition: all var(--transition-fast);
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
+      min-height: 44px;
+      touch-action: manipulation;
     }
 
-    .unit-nav-item:hover {
-      background: var(--bg-card-hover);
-      color: var(--text-primary);
+    .unit-nav-item:active {
+      transform: scale(0.98);
     }
 
     .unit-nav-item.active {
@@ -418,45 +516,80 @@
       box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
     }
 
+    /* Mobile Unit Selector (Dropdown on phone) */
+    .mobile-unit-picker-wrapper {
+      display: none;
+      margin-bottom: 1.25rem;
+    }
+
+    .mobile-unit-picker-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .mobile-unit-select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--accent-primary);
+      border-radius: var(--btn-radius);
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+
     .unit-content {
       background: var(--bg-card);
       backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 2.25rem;
-      font-size: 0.97rem;
+      padding: 2rem;
+      font-size: 0.98rem;
       line-height: 1.85;
+      word-break: break-word;
     }
 
     .unit-content h2 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
       color: var(--text-primary);
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.6rem;
+      line-height: 1.35;
     }
 
     .unit-content h3 {
-      font-size: 1.25rem;
-      margin: 1.6rem 0 0.6rem 0;
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.6rem 0;
       color: var(--accent-primary);
     }
 
     .unit-content h4 {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       margin: 1.2rem 0 0.4rem 0;
       color: var(--accent-secondary);
       font-weight: 700;
     }
 
     .unit-content p {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem;
       color: var(--text-secondary);
     }
 
     .unit-content ul, .unit-content ol {
-      margin-bottom: 1.25rem;
-      padding-left: 1.5rem;
+      margin-bottom: 1.2rem;
+      padding-left: 1.4rem;
       color: var(--text-secondary);
     }
 
@@ -467,28 +600,30 @@
     /* Table Styles */
     .table-container {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-radius: var(--btn-radius);
       border: 1px solid var(--border-color);
+      margin-bottom: 1.25rem;
     }
 
     table.data-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     table.data-table th {
       background: var(--bg-secondary);
       color: var(--text-primary);
-      padding: 0.95rem 1.1rem;
+      padding: 0.85rem 1rem;
       font-weight: 700;
       border-bottom: 2px solid var(--border-color);
       white-space: nowrap;
     }
 
     table.data-table td {
-      padding: 0.9rem 1.1rem;
+      padding: 0.85rem 1rem;
       border-bottom: 1px solid var(--border-color);
       color: var(--text-secondary);
       vertical-align: top;
@@ -509,15 +644,16 @@
 
     .search-input {
       flex: 1;
-      min-width: 250px;
-      padding: 0.7rem 1.1rem;
+      min-width: 240px;
+      padding: 0.75rem 1rem;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--btn-radius);
       color: var(--text-primary);
       outline: none;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       transition: border-color var(--transition-fast);
+      min-height: 44px;
     }
 
     .search-input:focus {
@@ -530,8 +666,9 @@
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 2.25rem 1rem;
+      padding: 2rem 1rem;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       display: flex;
       justify-content: center;
     }
@@ -540,12 +677,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2rem;
+      gap: 1.8rem;
+      min-width: 650px;
     }
 
     .tree-row {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.2rem;
       justify-content: center;
       position: relative;
       flex-wrap: wrap;
@@ -555,41 +693,43 @@
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      padding: 0.85rem 1.2rem;
-      font-size: 0.86rem;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.84rem;
       font-weight: 600;
       text-align: center;
       box-shadow: var(--shadow-sm);
       cursor: pointer;
       transition: all var(--transition-fast);
-      min-width: 140px;
-      max-width: 260px;
+      min-width: 130px;
+      max-width: 250px;
+      touch-action: manipulation;
     }
 
-    .node:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+    .node:active {
+      transform: scale(0.96);
     }
 
     .node.root {
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
       color: #ffffff;
-      font-size: 1rem;
-      padding: 1rem 1.75rem;
+      font-size: 0.95rem;
+      padding: 0.95rem 1.6rem;
       border: none;
     }
 
     .node.branch-trad { border-top: 3px solid var(--accent-primary); }
     .node.branch-adv { border-top: 3px solid var(--accent-secondary); }
 
-    /* Flashcard System */
+    /* Flashcard System with 3D Flip & Mobile Touch Swipe */
     .flashcard-wrapper {
       perspective: 1000px;
       max-width: 640px;
-      margin: 1.5rem auto;
-      height: 340px;
+      width: 100%;
+      margin: 1.25rem auto;
+      height: 330px;
       cursor: pointer;
+      touch-action: pan-y;
+      user-select: none;
     }
 
     .flashcard-inner {
@@ -597,7 +737,7 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       transform-style: preserve-3d;
     }
 
@@ -615,12 +755,14 @@
       border: 1px solid var(--border-color);
       background: var(--bg-card);
       backdrop-filter: var(--glass-blur);
-      padding: 2.25rem;
+      -webkit-backdrop-filter: var(--glass-blur);
+      padding: 1.75rem 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       box-shadow: var(--shadow-md);
+      overflow-y: auto;
     }
 
     .flashcard-back {
@@ -630,26 +772,26 @@
     }
 
     .flashcard-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--accent-primary);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
       font-weight: 700;
     }
 
     .flashcard-title {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
       line-height: 1.4;
     }
 
     .flashcard-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-secondary);
-      line-height: 1.7;
+      line-height: 1.65;
       white-space: pre-line;
     }
 
@@ -657,12 +799,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 0.65rem 1.25rem;
+      padding: 0.65rem 1.15rem;
       border-radius: var(--btn-radius);
       font-size: 0.88rem;
       font-weight: 600;
@@ -671,7 +814,14 @@
       transition: all var(--transition-fast);
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 44px;
+      touch-action: manipulation;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
     }
 
     .btn-secondary {
@@ -692,7 +842,6 @@
 
     .btn-primary:hover {
       filter: brightness(1.1);
-      transform: translateY(-1px);
     }
 
     /* Quiz & Exam UI */
@@ -700,14 +849,14 @@
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 1.75rem;
-      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .question-stem {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
       color: var(--text-primary);
       line-height: 1.65;
     }
@@ -716,22 +865,28 @@
       display: flex;
       flex-direction: column;
       gap: 0.65rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
 
     .option-label {
-      padding: 0.9rem 1.2rem;
+      padding: 0.85rem 1.1rem;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
       border-radius: var(--btn-radius);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: 0.93rem;
+      gap: 0.7rem;
+      font-size: 0.92rem;
       color: var(--text-secondary);
       transition: all var(--transition-fast);
       user-select: none;
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+
+    .option-label:active {
+      transform: scale(0.98);
     }
 
     .option-label:hover {
@@ -765,10 +920,10 @@
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--border-color);
       border-left: 4px solid var(--accent-secondary);
-      padding: 1.3rem;
+      padding: 1.2rem;
       border-radius: 0 8px 8px 0;
       margin-top: 1rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       line-height: 1.7;
     }
 
@@ -782,29 +937,26 @@
       display: grid;
       grid-template-columns: repeat(10, 1fr);
       gap: 0.45rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 640px) {
-      .exam-nav-grid { grid-template-columns: repeat(5, 1fr); }
+      margin-bottom: 1.25rem;
     }
 
     .exam-nav-btn {
-      padding: 0.45rem 0.2rem;
+      padding: 0.55rem 0.2rem;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      font-size: 0.8rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
       text-align: center;
       transition: all var(--transition-fast);
+      min-height: 44px;
+      touch-action: manipulation;
     }
 
-    .exam-nav-btn:hover {
-      border-color: var(--accent-primary);
-      color: var(--text-primary);
+    .exam-nav-btn:active {
+      transform: scale(0.94);
     }
 
     .exam-nav-btn.answered {
@@ -823,9 +975,9 @@
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
       border: 2px solid var(--accent-primary);
       border-radius: var(--card-radius);
-      padding: 2.5rem;
+      padding: 2rem 1.5rem;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
       box-shadow: var(--shadow-lg);
     }
 
@@ -835,22 +987,22 @@
     }
 
     .score-circle {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      border: 8px solid var(--accent-secondary);
-      margin: 0 auto 1.25rem auto;
+      border: 7px solid var(--accent-secondary);
+      margin: 0 auto 1.1rem auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       color: var(--text-primary);
     }
 
     .score-circle span {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-muted);
     }
@@ -858,36 +1010,31 @@
     /* Glossary Grid */
     .glossary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.85rem;
     }
 
     .glossary-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 10px;
-      padding: 1.1rem;
+      padding: 1rem;
       transition: transform var(--transition-fast);
     }
 
-    .glossary-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-primary);
-    }
-
     .glossary-term {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       color: var(--accent-primary);
       margin-bottom: 0.25rem;
     }
 
     .glossary-def {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-secondary);
     }
 
-    /* Modal Styles for Upcoming Modules */
+    /* Modal Styles */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -897,10 +1044,11 @@
       height: 100%;
       background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(8px);
-      z-index: 2000;
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 3000;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 1.25rem;
     }
 
     .modal-overlay.show {
@@ -912,53 +1060,205 @@
       background: var(--bg-secondary);
       border: 2px solid var(--accent-primary);
       border-radius: var(--card-radius);
-      max-width: 520px;
+      max-width: 500px;
       width: 100%;
-      padding: 2.25rem;
+      padding: 2rem 1.5rem;
       text-align: center;
       box-shadow: var(--shadow-lg);
     }
 
     .modal-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+      font-size: 2.8rem;
+      margin-bottom: 0.85rem;
     }
 
     .modal-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
       color: var(--text-primary);
     }
 
     .modal-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-secondary);
       line-height: 1.7;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
     /* Footer */
     footer {
       background: var(--bg-secondary);
       border-top: 1px solid var(--border-color);
-      padding: 1.75rem;
+      padding: 1.5rem 1rem calc(1.5rem + var(--sab)) 1rem;
       text-align: center;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       margin-top: auto;
+    }
+
+    /* ==========================================================================
+       MEDIA QUERIES: SMARTPHONE & TABLET RESPONSIVE COMPATIBILITY
+       ========================================================================== */
+    
+    /* 1. COMPACT PHONES & STANDARD MOBILE (iPhone SE, iPhone 12-16, Android, Galaxy, Pixel <= 768px) */
+    @media (max-width: 768px) {
+      header {
+        padding: calc(0.5rem + var(--sat)) calc(0.85rem + var(--sar)) 0.5rem calc(0.85rem + var(--sal));
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 1.1rem;
+      }
+
+      .brand-titles h1 {
+        font-size: 0.94rem;
+      }
+
+      .brand-titles p {
+        display: none; /* Keep header clean on small phones */
+      }
+
+      .score-badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.72rem;
+      }
+
+      /* Hide top navigation tabs, activate sticky mobile bottom bar */
+      nav.nav-tabs-bar {
+        display: none;
+      }
+
+      .mobile-bottom-nav {
+        display: flex;
+      }
+
+      main {
+        padding-top: 1rem;
+        padding-bottom: calc(5rem + var(--sab)); /* Prevent content from hiding behind bottom bar */
+      }
+
+      /* Mobile Unit Picker */
+      .mobile-unit-picker-wrapper {
+        display: block;
+      }
+
+      .unit-sidebar {
+        display: none; /* Replaced by top dropdown */
+      }
+
+      .lesson-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .unit-content {
+        padding: 1.25rem 1rem;
+        font-size: 0.94rem;
+        line-height: 1.75;
+      }
+
+      .unit-content h2 {
+        font-size: 1.3rem;
+      }
+
+      .glass-card {
+        padding: 1.15rem 0.95rem;
+        border-radius: 12px;
+      }
+
+      /* Mobile Flashcards */
+      .flashcard-wrapper {
+        height: 290px;
+      }
+
+      .flashcard-face {
+        padding: 1.25rem 1rem;
+      }
+
+      .flashcard-title {
+        font-size: 1.12rem;
+      }
+
+      .flashcard-desc {
+        font-size: 0.88rem;
+      }
+
+      /* 5-Column Question Grid for Thumb Comfort */
+      .exam-nav-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 0.35rem;
+      }
+
+      .exam-nav-btn {
+        min-height: 44px;
+        font-size: 0.88rem;
+        padding: 0.6rem 0.2rem;
+      }
+
+      .tree {
+        min-width: 580px;
+      }
+
+      .node {
+        min-width: 120px;
+        padding: 0.75rem 0.85rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* 2. TABLET PORTRAIT & SMALL TABLETS (iPad Mini, iPad 10.2", Galaxy Tab 769px – 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .lesson-grid {
+        grid-template-columns: 250px 1fr;
+        gap: 1.2rem;
+      }
+
+      .unit-content {
+        padding: 1.75rem;
+      }
+
+      .exam-nav-grid {
+        grid-template-columns: repeat(8, 1fr);
+      }
+
+      .mobile-bottom-nav {
+        display: none;
+      }
+
+      nav.nav-tabs-bar {
+        display: flex;
+      }
+    }
+
+    /* 3. TABLET LANDSCAPE & DESKTOP (> 1024px, iPad Pro Landscape, Mac, Windows) */
+    @media (min-width: 1025px) {
+      .mobile-bottom-nav {
+        display: none;
+      }
+
+      nav.nav-tabs-bar {
+        display: flex;
+      }
+
+      .mobile-unit-picker-wrapper {
+        display: none;
+      }
     }
   </style>
 </head>
 <body data-theme="dark">
 
-  <!-- Sticky Header -->
+  <!-- Sticky Header with Safe Areas -->
   <header>
     <div class="brand-container">
       <div class="brand-icon">⚕️</div>
       <div class="brand-titles">
         <h1 id="header-course-title">NCM 119: Leadership & Management Hub</h1>
-        <p id="header-module-subtitle">Module 1: Leadership vs Management | Unabridged Learning Suite</p>
+        <p id="header-module-subtitle">Module 1: Leadership vs Management | Comprehensive Learning Suite</p>
       </div>
     </div>
     <div class="header-controls">
@@ -1011,7 +1311,7 @@
     </div>
   </div>
 
-  <!-- Navigation Tabs -->
+  <!-- Desktop Navigation Tabs (Visible >= 769px) -->
   <nav class="nav-tabs-bar">
     <button class="tab-btn active" data-tab="tab-lesson">📖 Unabridged Lessons</button>
     <button class="tab-btn" data-tab="tab-matrix">🔀 Comparison Matrix</button>
@@ -1027,6 +1327,16 @@
 
     <!-- TAB 1: UNABRIDGED LESSON EXPLORER -->
     <section id="tab-lesson" class="tab-panel active">
+      <!-- Mobile Unit Dropdown Selector -->
+      <div class="mobile-unit-picker-wrapper">
+        <div class="mobile-unit-picker-label">
+          <span>📖 Jump to Unit:</span>
+        </div>
+        <select class="mobile-unit-select" id="mobile-unit-select" onchange="onMobileUnitChange(this.value)">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+
       <div class="lesson-grid">
         <div class="unit-sidebar" id="unit-sidebar-container">
           <!-- Populated dynamically by JavaScript -->
@@ -1041,7 +1351,7 @@
     <!-- TAB 2: COMPARISON MATRIX -->
     <section id="tab-matrix" class="tab-panel">
       <div class="filter-controls">
-        <input type="text" id="matrix-search" class="search-input" placeholder="Live search comparison terms, pioneer, indicators, or weaknesses...">
+        <input type="text" id="matrix-search" class="search-input" placeholder="Live search terms, pioneer, criteria, or weaknesses...">
       </div>
       <div id="matrix-content-container">
         <!-- Populated dynamically by JavaScript -->
@@ -1052,8 +1362,8 @@
     <section id="tab-mindmap" class="tab-panel">
       <div class="glass-card">
         <div class="card-header">
-          <h2 class="card-title">🌳 Interactive Curricular Architecture & Mindmap</h2>
-          <span class="badge badge-purple">Click any node for deep review</span>
+          <h2 class="card-title">🌳 Curricular Architecture & Mindmap</h2>
+          <span class="badge badge-purple">Touch node to explore</span>
         </div>
         <div class="mindmap-viewport" id="mindmap-viewport-container">
           <!-- Populated dynamically by JavaScript -->
@@ -1069,11 +1379,11 @@
       </div>
     </section>
 
-    <!-- TAB 4: FLASHCARDS -->
+    <!-- TAB 4: FLASHCARDS (SWIPE ENABLED) -->
     <section id="tab-flashcards" class="tab-panel">
       <div class="glass-card" style="text-align: center;">
         <div class="card-header">
-          <h2 class="card-title">🗂️ Active-Recall Mastery Flashcards</h2>
+          <h2 class="card-title">🗂️ Active-Recall Flashcards</h2>
           <span class="badge badge-primary" id="flashcard-counter">Card 1 / 30</span>
         </div>
 
@@ -1082,7 +1392,7 @@
             <div class="flashcard-face flashcard-front">
               <span class="flashcard-tag" id="fc-tag">Tag</span>
               <h3 class="flashcard-title" id="fc-front">Question Front</h3>
-              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">(Click card or press Space to flip)</p>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.85rem;">(Tap to flip • Swipe left/right on mobile)</p>
             </div>
             <div class="flashcard-face flashcard-back">
               <span class="flashcard-tag" style="color: var(--accent-secondary);">Core Board Concept</span>
@@ -1092,8 +1402,8 @@
         </div>
 
         <div class="flashcard-controls">
-          <button class="btn btn-secondary" onclick="prevFlashcard()">← Previous</button>
-          <button class="btn btn-primary" onclick="flipFlashcard()">🔄 Flip Card</button>
+          <button class="btn btn-secondary" onclick="prevFlashcard()">← Prev</button>
+          <button class="btn btn-primary" onclick="flipFlashcard()">🔄 Flip</button>
           <button class="btn btn-secondary" onclick="nextFlashcard()">Next →</button>
           <button class="btn btn-secondary" onclick="shuffleFlashcards()">🎲 Shuffle</button>
         </div>
@@ -1104,11 +1414,11 @@
     <section id="tab-quiz" class="tab-panel">
       <div class="glass-card">
         <div class="card-header">
-          <h2 class="card-title">🔍 Formative Review & Clinical Scenarios</h2>
+          <h2 class="card-title">🔍 Formative Practice Drills</h2>
           <span class="badge badge-success" id="quiz-score-tracker">Score: 0 / 0</span>
         </div>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-          Select the best clinical leadership or managerial action. Rationales unlock immediately upon selection.
+        <p style="color: var(--text-secondary); margin-bottom: 1.25rem; font-size: 0.92rem;">
+          Select your clinical choice. Rationales reveal immediately upon tap.
         </p>
 
         <div id="checkpoint-quiz-container">
@@ -1125,34 +1435,34 @@
           <div id="exam-score-num">0</div>
           <span>/ 40</span>
         </div>
-        <h2 id="exam-verdict-text" style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-primary);">Examination Complete</h2>
-        <p id="exam-feedback-text" style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem auto; line-height: 1.7;"></p>
+        <h2 id="exam-verdict-text" style="font-size: 1.45rem; margin-bottom: 0.4rem; color: var(--text-primary);">Examination Complete</h2>
+        <p id="exam-feedback-text" style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.25rem auto; line-height: 1.7; font-size: 0.92rem;"></p>
         <button class="btn btn-primary" onclick="restartExamSimulator()">🔄 Retake Board Exam</button>
       </div>
 
       <div class="glass-card">
         <div class="card-header">
-          <h2 class="card-title" id="exam-card-title">🎓 40-Item Comprehensive Board Examination Simulator</h2>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <span class="badge badge-warning" id="exam-timer-display">⏱️ Time Remaining: 45:00</span>
+          <h2 class="card-title" id="exam-card-title">🎓 40-Item Comprehensive Board Exam Simulator</h2>
+          <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+            <span class="badge badge-warning" id="exam-timer-display">⏱️ 45:00</span>
             <button class="btn btn-primary" id="btn-submit-exam" onclick="submitExamForGrading()">Submit Final Exam</button>
           </div>
         </div>
 
         <!-- Question Navigator Grid 1-40 -->
         <div class="exam-nav-grid" id="exam-navigator-grid">
-          <!-- 1-40 buttons populated by JavaScript -->
+          <!-- Populated by JavaScript -->
         </div>
 
-        <!-- Single Question Container with Next / Prev buttons -->
+        <!-- Single Question Container -->
         <div id="exam-single-question-container">
           <!-- Current question displayed here -->
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
-          <button class="btn btn-secondary" onclick="navigateExamQuestion(-1)">← Previous Item</button>
-          <span style="font-size: 0.88rem; color: var(--text-muted);" id="exam-item-indicator">Item 1 of 40</span>
-          <button class="btn btn-secondary" onclick="navigateExamQuestion(1)">Next Item →</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; gap: 0.5rem;">
+          <button class="btn btn-secondary" onclick="navigateExamQuestion(-1)">← Previous</button>
+          <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;" id="exam-item-indicator">Item 1 of 40</span>
+          <button class="btn btn-secondary" onclick="navigateExamQuestion(1)">Next →</button>
         </div>
       </div>
     </section>
@@ -1161,11 +1471,11 @@
     <section id="tab-glossary" class="tab-panel">
       <div class="glass-card">
         <div class="card-header">
-          <h2 class="card-title">🔤 Master Clinical & Leadership Acronym Decoder</h2>
-          <span class="badge badge-primary">100% Expanded Terminology</span>
+          <h2 class="card-title">🔤 Clinical & Leadership Acronym Decoder</h2>
+          <span class="badge badge-primary">100% Expanded</span>
         </div>
         <div class="filter-controls">
-          <input type="text" id="glossary-search" class="search-input" placeholder="Search abbreviation or expanded terminology (e.g., POSDCORB, CLABSI, nAch)...">
+          <input type="text" id="glossary-search" class="search-input" placeholder="Search abbreviation or meaning (e.g., POSDCORB, CLABSI)...">
         </div>
         <div class="glossary-grid" id="glossary-items-container">
           <!-- Populated dynamically by JavaScript -->
@@ -1174,6 +1484,52 @@
     </section>
 
   </main>
+
+  <!-- Mobile Bottom Navigation Bar (Active on Phones <= 768px) -->
+  <div class="mobile-bottom-nav">
+    <button class="mobile-nav-item active" data-tab="tab-lesson" onclick="switchMobileTab('tab-lesson')">
+      <span class="nav-icon">📖</span>
+      <span>Lessons</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="tab-matrix" onclick="switchMobileTab('tab-matrix')">
+      <span class="nav-icon">🔀</span>
+      <span>Matrix</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="tab-flashcards" onclick="switchMobileTab('tab-flashcards')">
+      <span class="nav-icon">🗂️</span>
+      <span>Cards</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="tab-quiz" onclick="switchMobileTab('tab-quiz')">
+      <span class="nav-icon">🔍</span>
+      <span>Quiz</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="tab-exam" onclick="switchMobileTab('tab-exam')">
+      <span class="nav-icon">🎓</span>
+      <span>Exam</span>
+    </button>
+    <button class="mobile-nav-item" id="mobile-more-btn" onclick="openMoreSheet()">
+      <span class="nav-icon">⋯</span>
+      <span>More</span>
+    </button>
+  </div>
+
+  <!-- Mobile "More" Sheet Modal -->
+  <div class="modal-overlay" id="more-modal" onclick="closeMoreSheet()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3 class="modal-title" style="margin-bottom: 1.25rem;">📚 Additional Study Tools</h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <button class="btn btn-secondary" style="width: 100%; justify-content: flex-start; padding: 0.9rem;" onclick="switchMobileTab('tab-mindmap'); closeMoreSheet();">
+          <span style="font-size: 1.25rem;">🌳</span>
+          <span>Interactive Curricular Mindmap</span>
+        </button>
+        <button class="btn btn-secondary" style="width: 100%; justify-content: flex-start; padding: 0.9rem;" onclick="switchMobileTab('tab-glossary'); closeMoreSheet();">
+          <span style="font-size: 1.25rem;">🔤</span>
+          <span>100% Expanded Acronym Decoder</span>
+        </button>
+      </div>
+      <button class="btn btn-primary" style="width: 100%; margin-top: 1.25rem;" onclick="closeMoreSheet()">Done</button>
+    </div>
+  </div>
 
   <!-- Modal Dialog for Upcoming Modules -->
   <div class="modal-overlay" id="upcoming-modal" onclick="closeUpcomingModal()">
@@ -1188,8 +1544,8 @@
   </div>
 
   <footer>
-    <p><strong>NCM 119: Nursing Leadership and Management</strong> | Master Curriculum Alignment: CHED, PNLE, & NCLEX-RN</p>
-    <p style="margin-top: 0.35rem; opacity: 0.75;">Course Lecturer: Maila DG. Torres, RM, RN, MAN | Comprehensive Learning Suite</p>
+    <p><strong>NCM 119: Nursing Leadership and Management</strong> | CHED, PNLE, & NCLEX-RN Alignment</p>
+    <p style="margin-top: 0.35rem; opacity: 0.75;">Lecturer: Maila DG. Torres, RM, RN, MAN | Mobile & Tablet Ready</p>
   </footer>
 
   <!-- SCRIPT DATA & CONTROLLERS -->
@@ -3032,23 +3388,85 @@
         localStorage.setItem('ncm119_theme', newTheme);
       });
 
-      // Tab navigation
+      // Desktop Tab Navigation
       const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabPanels = document.querySelectorAll('.tab-panel');
       tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabPanels.forEach(p => p.classList.remove('active'));
-          btn.classList.add('active');
           const target = btn.getAttribute('data-tab');
-          document.getElementById(target).classList.add('active');
+          setActiveTab(target);
         });
       });
 
-      // Load initial module (check localStorage)
+      // Load initial module (from localStorage)
       const savedMod = parseInt(localStorage.getItem('ncm119_active_mod')) || 1;
       switchActiveModule(savedMod);
+
+      // Register Touch Swipe on Flashcards
+      setupTouchSwipeGestures();
     });
+
+    /* Tab Switching Core (Syncs desktop tabs and mobile bottom bar) */
+    function setActiveTab(targetTabId) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      const targetPanel = document.getElementById(targetTabId);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      // Sync desktop tabs
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-tab') === targetTabId);
+      });
+
+      // Sync mobile bottom nav
+      document.querySelectorAll('.mobile-nav-item').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-tab') === targetTabId);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchMobileTab(targetTabId) {
+      setActiveTab(targetTabId);
+    }
+
+    function openMoreSheet() {
+      document.getElementById('more-modal').classList.add('show');
+    }
+
+    function closeMoreSheet() {
+      document.getElementById('more-modal').classList.remove('show');
+    }
+
+    /* ==========================================================================
+       TOUCH GESTURE SYSTEM (SWIPE FOR FLASHCARDS)
+       ========================================================================== */
+    function setupTouchSwipeGestures() {
+      const fcBox = document.getElementById('flashcard-box');
+      if (!fcBox) return;
+
+      let startX = 0;
+      let startY = 0;
+
+      fcBox.addEventListener('touchstart', (e) => {
+        startX = e.changedTouches[0].screenX;
+        startY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      fcBox.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].screenX;
+        const endY = e.changedTouches[0].screenY;
+        const diffX = endX - startX;
+        const diffY = endY - startY;
+
+        // Check horizontal swipe gesture (at least 45px distance and horizontal > vertical)
+        if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX < 0) {
+            nextFlashcard(); // Swipe left -> next
+          } else {
+            prevFlashcard(); // Swipe right -> prev
+          }
+        }
+      }, { passive: true });
+    }
 
     /* ==========================================================================
        MODULE SWITCHING ENGINE
@@ -3110,27 +3528,57 @@
     function renderLessonUnits(mod) {
       const sidebar = document.getElementById('unit-sidebar-container');
       const display = document.getElementById('unit-display');
+      const mobileSelect = document.getElementById('mobile-unit-select');
+
       sidebar.innerHTML = '';
+      mobileSelect.innerHTML = '';
 
       const unitKeys = Object.keys(mod.units);
       if (unitKeys.length === 0) return;
 
       unitKeys.forEach((key, index) => {
+        // Desktop / Tablet Sidebar button
         const btn = document.createElement('button');
         btn.className = `unit-nav-item ${index === 0 ? 'active' : ''}`;
         btn.setAttribute('data-unit', key);
         btn.innerHTML = mod.units[key].title;
         btn.addEventListener('click', () => {
-          document.querySelectorAll('.unit-nav-item').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          display.innerHTML = mod.units[key].content;
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          selectUnit(key);
         });
         sidebar.appendChild(btn);
+
+        // Mobile select option
+        const opt = document.createElement('option');
+        opt.value = key;
+        // Strip emoji or HTML tags for clean select option text
+        opt.textContent = mod.units[key].title.replace(/<[^>]*>/g, '');
+        mobileSelect.appendChild(opt);
       });
 
       // Show first unit
-      display.innerHTML = mod.units[unitKeys[0]].content;
+      selectUnit(unitKeys[0]);
+    }
+
+    function selectUnit(unitKey) {
+      const mod = MODULES_DATA[currentModuleId];
+      if (!mod || !mod.units[unitKey]) return;
+
+      // Update sidebar active class
+      document.querySelectorAll('.unit-nav-item').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-unit') === unitKey);
+      });
+
+      // Update mobile select
+      const mobileSelect = document.getElementById('mobile-unit-select');
+      if (mobileSelect) mobileSelect.value = unitKey;
+
+      // Render content
+      document.getElementById('unit-display').innerHTML = mod.units[unitKey].content;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function onMobileUnitChange(unitKey) {
+      selectUnit(unitKey);
     }
 
     /* ==========================================================================
@@ -3253,7 +3701,7 @@
           const optLetter = opt.trim().charAt(0);
 
           optLabel.addEventListener('click', () => {
-            if (userQuizAnswers[q.id]) return; // Answered
+            if (userQuizAnswers[q.id]) return;
             userQuizAnswers[q.id] = optLetter;
 
             const isCorrect = optLetter === q.answer;
@@ -3261,7 +3709,6 @@
               optLabel.classList.add('correct-state');
             } else {
               optLabel.classList.add('incorrect-state');
-              // Highlight correct option
               optContainer.querySelectorAll('.option-label').forEach(lbl => {
                 if (lbl.textContent.trim().startsWith(q.answer)) lbl.classList.add('correct-state');
               });
@@ -3351,7 +3798,6 @@
         const optLetter = opt.trim().charAt(0);
         optLabel.textContent = opt;
 
-        // If previously answered
         if (userExamAnswers[q.id] === optLetter) {
           optLabel.classList.add('selected');
         }
@@ -3361,7 +3807,6 @@
           optContainer.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
           optLabel.classList.add('selected');
 
-          // Mark navigator button as answered
           const navBtn = document.getElementById(`exam-nav-${index}`);
           if (navBtn) navBtn.classList.add('answered');
         });
@@ -3390,7 +3835,7 @@
         examTimeLeft--;
         const mins = Math.floor(examTimeLeft / 60);
         const secs = examTimeLeft % 60;
-        timerDisplay.textContent = `⏱️ Time Remaining: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        timerDisplay.textContent = `⏱️ ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 
         if (examTimeLeft <= 0) {
           clearInterval(examTimerInterval);
@@ -3417,11 +3862,9 @@
         }
       });
 
-      // Show rationales on currently viewed question
       const curRat = document.getElementById(`exam-rat-${currentExamIndex}`);
       if (curRat) curRat.classList.add('show');
 
-      // Update summary box
       const summaryPanel = document.getElementById('exam-summary-panel');
       const scoreNum = document.getElementById('exam-score-num');
       const verdict = document.getElementById('exam-verdict-text');

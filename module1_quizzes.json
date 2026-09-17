@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "stem": "A bedside staff Registered Nurse (RN) on a medical telemetry unit notices that the newly hired nurses frequently commit procedural errors during central venous catheter dressing changes. Without being asked by the Nurse Manager, the staff nurse gathers current evidence-based practice guidelines, creates an illustrated bedside checklist, and voluntarily mentors her peers during night shifts. Which concept best characterizes this nurse's actions?",
+    "options": [
+      "A. Legitimate Positional Management",
+      "B. Autocratic Clinical Management",
+      "C. Professional Nursing Leadership",
+      "D. Transactional Administrative Management"
+    ],
+    "answer": "C",
+    "rationale": "Leadership is an influence process rooted in shared meaning and proactive initiative rather than a formal title. Unlike management—which requires formal institutional authority, assigned position, and designated administrative responsibility (such as budgets and appraisals)—leadership is part of every Registered Nurse's professional duty. Here, the staff nurse acts without formal authority, using expertise and initiative to improve patient outcomes."
+  },
+  {
+    "id": 2,
+    "stem": "During a major hospital restructuring, a Nurse Manager notices that the staff nurses are experiencing profound anxiety and confusion regarding their job descriptions. The manager holds weekly town halls where she clearly translates the hospital's strategic vision into daily unit priorities, actively uses analogies, and clarifies the purpose of each operational change. According to Warren Bennis, which core leadership competency is this manager demonstrating?",
+    "options": [
+      "A. Management of Attention",
+      "B. Management of Meaning",
+      "C. Management of Trust",
+      "D. Management of Self"
+    ],
+    "answer": "B",
+    "rationale": "Warren Bennis identified four competencies in his study of 90 outstanding leaders: Attention, Meaning, Trust, and Self. *Management of Meaning* is the capacity to make ideas, values, and organizational goals clear, understandable, and deeply relevant to followers through effective communication, alignment, and storytelling. Management of Attention involves focusing on a compelling vision; Management of Trust involves constancy and integrity; Management of Self involves self-awareness."
+  },
+  {
+    "id": 3,
+    "stem": "A sudden electrical fire breaks out in the Neonatal Intensive Care Unit (NICU). Smoke is entering patient rooms housing ventilator-dependent infants. The Charge Nurse immediately begins assigning specific evacuation routes to each nurse and commanding staff without waiting for group consensus or debate. Which leadership style is being demonstrated, and is it appropriate?",
+    "options": [
+      "A. Democratic Leadership; inappropriate because staff input was silenced.",
+      "B. Laissez-Faire Leadership; appropriate because staff are licensed professionals.",
+      "C. Autocratic Leadership; appropriate because emergent crises demand rapid, centralized command.",
+      "D. Transformational Leadership; inappropriate because vision was not articulated."
+    ],
+    "answer": "C",
+    "rationale": "Autocratic (Authoritarian) leadership is characterized by high control, minimal subordinate freedom, and unilateral decision-making by the leader. While autocratic leadership can suppress creativity during routine operations, it is clinically and ethically mandatory in life-threatening emergencies (e.g., Code Blue, fires, disaster evacuations). Seeking consensus in a burning NICU would result in catastrophic patient harm."
+  },
+  {
+    "id": 4,
+    "stem": "In an attempt to motivate nurses to improve patient satisfaction scores and decrease medication errors, a hospital executive grants a 10% across-the-board salary raise and replaces all broken computers. Three months later, the Nurse Manager observes that although staff complaints about pay have ceased, there has been no measurable increase in nurse engagement, innovation, or voluntary quality improvement participation. How does Frederick Herzberg's Two-Factor Theory explain this outcome?",
+    "options": [
+      "A. Salary and equipment are motivator factors that take over a year to show measurable clinical impact.",
+      "B. Salary and working conditions are hygiene factors; their presence prevents dissatisfaction but does not actively motivate high performance.",
+      "C. The nurses have not satisfied their physiological needs according to Maslow's hierarchy.",
+      "D. Money acts as an intrinsic motivator only when paired with autocratic supervisory methods."
+    ],
+    "answer": "B",
+    "rationale": "Frederick Herzberg's Motivation-Hygiene (Two-Factor) Theory states that job dissatisfaction and job satisfaction are driven by separate elements. *Hygiene factors* (salary, working conditions, company policy, supervision) are extrinsic maintenance factors. Providing adequate hygiene factors merely eliminates dissatisfaction (neutral state). To actively inspire motivation and clinical excellence, the organization must provide *Motivator factors* (achievement, recognition, meaningful work, autonomy, and professional responsibility)."
+  },
+  {
+    "id": 5,
+    "stem": "A cardiovascular surgeon angrily insults a newly graduated Registered Nurse at the nurses' station for an alleged delay in obtaining an arterial blood gas result. The Nurse Manager calmly steps in, directs the discussion to a private consultation room, listens to the physician's frustration, and maintains absolute emotional composure while asserting unit safety standards. The Nurse Manager is exhibiting which dimension of Emotional Intelligence?",
+    "options": [
+      "A. Technical Acquired Intelligence",
+      "B. Self-Regulation",
+      "C. Transactional Contingency",
+      "D. Laissez-Faire Restraint"
+    ],
+    "answer": "B",
+    "rationale": "Daniel Goleman defines *Self-Regulation* as the ability to control disruptive impulses and moods, suspend snap judgments, and maintain professional composure under high-stress clinical provocations. The manager avoids reacting with reciprocal anger and manages the volatile confrontation privately and professionally."
+  },
+  {
+    "id": 6,
+    "stem": "A newly licensed Registered Nurse has just completed her two-week hospital orientation and is assigned to the surgical intensive care unit. She is enthusiastic and eager to care for open-heart surgery patients but lacks clinical competence in hemodynamic monitoring and titration of vasoactive infusions. According to Hersey and Blanchard's Situational Leadership Model, which leadership style should the preceptor adopt?",
+    "options": [
+      "A. Delegating (Low Task, Low Relationship)",
+      "B. Participating / Supporting (Low Task, High Relationship)",
+      "C. Selling / Coaching (High Task, High Relationship)",
+      "D. Telling / Directing (High Task, Low Relationship)"
+    ],
+    "answer": "C",
+    "rationale": "In Hersey and Blanchard's model, the nurse exhibits Readiness Level 2 (R2): Low Competence but High Willingness/Enthusiasm. The corresponding optimal leadership style is *Selling / Coaching (S2)*, which provides high task guidance (teaching how to titrate vasoactive drips) combined with high relationship support (encouragement and explaining the rationale behind decisions)."
+  },
+  {
+    "id": 7,
+    "stem": "A Chief Nursing Officer (CNO) inspires hospital staff to pursue Magnet Hospital designation by articulating a compelling vision of nursing autonomy, introducing shared governance committees, encouraging bedside nurses to question outdated wound care traditions, and mentoring clinical nurse leaders. This CNO is exemplifying which leadership model?",
+    "options": [
+      "A. Transactional Leadership",
+      "B. Transformational Leadership",
+      "C. Scientific Taylorism",
+      "D. Bureaucratic Leadership"
+    ],
+    "answer": "B",
+    "rationale": "Transformational leadership elevates followers through vision, moral purpose, and the \"Four I's\": Idealized Influence (role modeling), Inspirational Motivation (compelling vision), Intellectual Stimulation (challenging outdated traditions), and Individualized Consideration (mentoring). It contrasts with Transactional leadership, which relies on simple contingent rewards and management-by-exception."
+  },
+  {
+    "id": 8,
+    "stem": "During a unit staff meeting regarding a proposed change to 12-hour rotating shifts, Nurse Gomez actively evaluates the literature on circadian rhythm disruption, speaks up during the meeting with well-reasoned concerns about medication errors, and simultaneously proposes a pilot schedule that balances coverage while mitigating fatigue. According to Robert Kelley, Nurse Gomez is exhibiting which followership style?",
+    "options": [
+      "A. Alienated Follower",
+      "B. Exemplary / Star Follower",
+      "C. Conformist / Yes-Person Follower",
+      "D. Passive Follower"
+    ],
+    "answer": "B",
+    "rationale": "In Robert Kelley's model, the *Exemplary (Star) Follower* combines high independent critical thinking with high active engagement. Nurse Gomez evaluates proposals critically, identifies risks constructively, and actively works with leadership to formulate solutions."
+  },
+  {
+    "id": 9,
+    "stem": "A Head Nurse installs motion sensors and surveillance cameras in the nursing supply closet, requires staff to log every single minute of their bathroom breaks on a clipboard, and announces that any nurse found resting for more than five minutes during a night shift will receive an immediate written reprimand. This manager’s philosophy reflects:",
+    "options": [
+      "A. McGregor's Theory Y",
+      "B. McGregor's Theory X",
+      "C. Servant Leadership",
+      "D. Transformational Human Relations"
+    ],
+    "answer": "B",
+    "rationale": "Douglas McGregor's *Theory X* is based on the assumption that employees inherently dislike work, are naturally lazy, lack ambition, and avoid responsibility. Consequently, a Theory X manager relies on intense surveillance, external coercion, rigid control, and the constant threat of punitive action."
+  },
+  {
+    "id": 10,
+    "stem": "The Nurse Manager of an Emergency Department is faced with an unexpected 40% surge in patient admissions due to an interstate multi-vehicle collision, while simultaneously two registered nurses call in sick. The manager immediately adjusts patient acuity assignments, diverts non-urgent walk-in patients to an outpatient clinic, and reallocates floating nurses from the ambulatory surgical center to the trauma bay. In this situation, the manager is acting in which Mintzberg role?",
+    "options": [
+      "A. Figurehead",
+      "B. Disseminator",
+      "C. Resource Allocator / Disturbance Handler",
+      "D. Liaison"
+    ],
+    "answer": "C",
+    "rationale": "Under Henry Mintzberg's managerial roles, *Disturbance Handler* and *Resource Allocator* are vital decisional roles. The disturbance handler responds immediately to unexpected external shocks and operational crises, while the resource allocator determines staffing distribution, physical bed placement, and clinical manpower assignments."
+  },
+  {
+    "id": 11,
+    "stem": "Nurse Manager Cruz is widely known as a manager who \"wants everyone to be happy.\" When two nurses submit conflicting requests for Christmas holiday leave, she approves both without arranging replacement coverage. When a staff nurse consistently arrives 45 minutes late for morning handover, Cruz avoids speaking with her to prevent awkwardness. By the end of the quarter, the unit budget has an enormous overtime deficit and reliable staff are threatening to resign. Nurse Cruz exemplifies which bad management style?",
+    "options": [
+      "A. The \"Know-It-All\" Manager",
+      "B. The \"Emotionally Remote\" Manager",
+      "C. The \"Overly Nice\" Manager",
+      "D. The \"Purely Mean\" Manager"
+    ],
+    "answer": "C",
+    "rationale": "The \"Overly Nice\" manager is desperate to be liked and avoids confrontation at all costs. By trying to please everyone, they fail to establish operational boundaries, refuse to hold poor performers accountable, approve conflicting requests, and drain institutional financial resources, ultimately damaging unit morale and patient safety."
+  },
+  {
+    "id": 12,
+    "stem": "The Quality Assurance committee of a tertiary hospital reviews monthly clinical data showing that catheter-associated urinary tract infections (CAUTIs) have risen by 15% on the neuro-stepdown floor. The Nurse Manager compares these figures against national benchmark standards, conducts an audit of catheter insertion technique, and initiates a mandatory sterile catheter re-training module. Which phase of the classic management process is being conducted?",
+    "options": [
+      "A. Planning",
+      "B. Organizing",
+      "C. Directing",
+      "D. Controlling"
+    ],
+    "answer": "D",
+    "rationale": "Henri Fayol's *Controlling* function (often called Evaluating) involves establishing quality standards, measuring actual ongoing clinical performance against those standards, identifying discrepancies, and initiating corrective actions (such as audits, retraining, or Root Cause Analysis) to ensure organizational goals are met."
+  }
+]

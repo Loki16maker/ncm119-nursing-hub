@@ -1,0 +1,207 @@
+[
+  {
+    "abbr": "AONE",
+    "full": "American Organization of Nurse Executives",
+    "def": "National leadership body setting nurse manager competency standards (now AONL)."
+  },
+  {
+    "abbr": "BLS",
+    "full": "Basic Life Support",
+    "def": "Foundational emergency cardiovascular resuscitation training for healthcare professionals."
+  },
+  {
+    "abbr": "BSN",
+    "full": "Bachelor of Science in Nursing",
+    "def": "Four-year baccalaureate academic degree required for professional registered nursing licensure."
+  },
+  {
+    "abbr": "CCU",
+    "full": "Coronary Care Unit / Critical Care Unit",
+    "def": "Specialized hospital intensive care facility for acute cardiovascular crises."
+  },
+  {
+    "abbr": "CHED",
+    "full": "Commission on Higher Education",
+    "def": "Philippine government regulatory agency governing tertiary nursing academic curricula."
+  },
+  {
+    "abbr": "CLABSI",
+    "full": "Central Line-Associated Bloodstream Infection",
+    "def": "Hospital-acquired bloodstream infection originating from central venous catheters."
+  },
+  {
+    "abbr": "CNO",
+    "full": "Chief Nursing Officer",
+    "def": "Highest-ranking executive nurse responsible for all institutional nursing clinical operations."
+  },
+  {
+    "abbr": "CNS",
+    "full": "Clinical Nurse Specialist",
+    "def": "Advanced Practice Registered Nurse (APRN) expert in clinical practice, research, and consultation."
+  },
+  {
+    "abbr": "CQI",
+    "full": "Continuous Quality Improvement",
+    "def": "Ongoing organizational philosophy of constantly analyzing and improving clinical processes."
+  },
+  {
+    "abbr": "CPR",
+    "full": "Cardiopulmonary Resuscitation",
+    "def": "Emergency lifesaving procedure performed during cardiac arrest."
+  },
+  {
+    "abbr": "DOH",
+    "full": "Department of Health",
+    "def": "National government executive agency responsible for public health and hospital regulation in the Philippines."
+  },
+  {
+    "abbr": "ED / ER",
+    "full": "Emergency Department / Emergency Room",
+    "def": "Hospital facility dedicated to providing immediate medical care for acute illness and trauma."
+  },
+  {
+    "abbr": "EHR / EMR",
+    "full": "Electronic Health Record / Electronic Medical Record",
+    "def": "Digitalized longitudinal repository of patient clinical documentation and diagnostics."
+  },
+  {
+    "abbr": "EI / EQ",
+    "full": "Emotional Intelligence / Emotional Quotient",
+    "def": "Capacity to recognize, understand, and manage one's own emotions and interpersonal relationships."
+  },
+  {
+    "abbr": "EBP",
+    "full": "Evidence-Based Practice",
+    "def": "Synthesizing the best research evidence with clinical expertise and patient values."
+  },
+  {
+    "abbr": "HAPI",
+    "full": "Hospital-Acquired Pressure Injury",
+    "def": "Localized damage to skin and underlying tissue occurring during inpatient hospital stay."
+  },
+  {
+    "abbr": "ICU",
+    "full": "Intensive Care Unit",
+    "def": "Hospital department providing intensive, continuous physiological monitoring for life-threatening conditions."
+  },
+  {
+    "abbr": "IV",
+    "full": "Intravenous",
+    "def": "Direct administration of medications, blood products, or fluids into a vein."
+  },
+  {
+    "abbr": "LPC",
+    "full": "Least Preferred Coworker",
+    "def": "Scale developed by Fred Fiedler to assess whether a leader is task-oriented or relationship-oriented."
+  },
+  {
+    "abbr": "MAN",
+    "full": "Master of Arts in Nursing",
+    "def": "Postgraduate academic master's degree focusing on nursing education and administration."
+  },
+  {
+    "abbr": "MSN",
+    "full": "Master of Science in Nursing",
+    "def": "Advanced postgraduate degree preparing nurses for specialized administrative or clinical roles."
+  },
+  {
+    "abbr": "NCLEX-RN",
+    "full": "National Council Licensure Examination for Registered Nurses",
+    "def": "Standardized examination used to test competency of nurse candidates in the United States and Canada."
+  },
+  {
+    "abbr": "nAch",
+    "full": "Need for Achievement",
+    "def": "David McClelland's motivational drive to achieve excellence and master challenging tasks."
+  },
+  {
+    "abbr": "nAff",
+    "full": "Need for Affiliation",
+    "def": "David McClelland's motivational drive for warm, harmonious interpersonal relationships."
+  },
+  {
+    "abbr": "nPower",
+    "full": "Need for Power",
+    "def": "David McClelland's motivational drive to influence, command, and control others."
+  },
+  {
+    "abbr": "NICU",
+    "full": "Neonatal Intensive Care Unit",
+    "def": "Specialized critical care unit for premature or critically ill newborn infants."
+  },
+  {
+    "abbr": "NCM",
+    "full": "Nursing Care Management",
+    "def": "Core academic subject code for nursing professional courses in the Philippine BSN curriculum."
+  },
+  {
+    "abbr": "OR",
+    "full": "Operating Room",
+    "def": "Sterile surgical suite where invasive operative procedures are performed."
+  },
+  {
+    "abbr": "PACU",
+    "full": "Post-Anesthesia Care Unit",
+    "def": "Critical post-surgical recovery unit where patients recover from general or regional anesthesia."
+  },
+  {
+    "abbr": "PDCA",
+    "full": "Plan-Do-Check-Act",
+    "def": "Deming's four-stage iterative management method for continuous quality improvement."
+  },
+  {
+    "abbr": "PICU",
+    "full": "Pediatric Intensive Care Unit",
+    "def": "Critical care hospital unit dedicated to infants, children, and adolescents with life-threatening illness."
+  },
+  {
+    "abbr": "PNLE",
+    "full": "Philippine Nursing Licensure Examination",
+    "def": "National standardized board licensure examination administered by the PRC Board of Nursing."
+  },
+  {
+    "abbr": "POSDCORB",
+    "full": "Planning, Organizing, Staffing, Directing, Coordinating, Reporting, and Budgeting",
+    "def": "Luther Gulick's classic administrative management framework expanded from Henri Fayol."
+  },
+  {
+    "abbr": "PPE",
+    "full": "Personal Protective Equipment",
+    "def": "Protective barriers including gowns, N95 respirators, gloves, and face shields."
+  },
+  {
+    "abbr": "PRC",
+    "full": "Professional Regulation Commission",
+    "def": "Philippine government agency that licenses and regulates professionals, including Registered Nurses."
+  },
+  {
+    "abbr": "QI",
+    "full": "Quality Improvement",
+    "def": "Systematic, data-driven approach to improving healthcare delivery processes and patient outcomes."
+  },
+  {
+    "abbr": "RCA",
+    "full": "Root Cause Analysis",
+    "def": "Structured retrospective method used to identify underlying causal factors in clinical errors."
+  },
+  {
+    "abbr": "RM",
+    "full": "Registered Midwife",
+    "def": "Licensed healthcare professional specializing in pregnancy, labor, delivery, and postpartum care."
+  },
+  {
+    "abbr": "RN",
+    "full": "Registered Nurse",
+    "def": "Graduate licensed healthcare professional practicing within the full legal scope of nursing."
+  },
+  {
+    "abbr": "TJC",
+    "full": "The Joint Commission",
+    "def": "Independent, non-profit organization that accredits and certifies healthcare organizations."
+  },
+  {
+    "abbr": "UAP",
+    "full": "Unlicensed Assistive Personnel",
+    "def": "Trained healthcare workers who assist licensed nurses with basic patient care activities."
+  }
+]

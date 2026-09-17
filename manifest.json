@@ -1,0 +1,24 @@
+{
+  "name": "NCM 119: Nursing Leadership & Management Hub",
+  "short_name": "NCM 119 Hub",
+  "description": "Unabridged interactive learning suite and board exam simulator for 4th-Year Nursing students",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
