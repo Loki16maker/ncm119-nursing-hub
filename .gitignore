@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
+module1_extracted.json
+module1_full_text.txt
+module1_ocr_results.txt
+*.log
