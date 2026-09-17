@@ -472,9 +472,11 @@
     /* Lesson Layout Grid */
     .lesson-grid {
       display: grid;
-      grid-template-columns: 310px 1fr;
+      grid-template-columns: 280px minmax(0, 1fr);
       gap: 1.5rem;
       align-items: start;
+      width: 100%;
+      max-width: 100%;
     }
 
     .unit-sidebar {
@@ -485,6 +487,9 @@
       gap: 0.45rem;
       max-height: calc(100vh - 7rem);
       overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 0.25rem;
     }
 
     .unit-nav-item {
@@ -497,7 +502,7 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-muted);
-      transition: all var(--transition-fast);
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
       display: flex;
       align-items: center;
       gap: 0.55rem;
@@ -506,7 +511,15 @@
     }
 
     .unit-nav-item:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .unit-nav-item:hover {
+        background: var(--bg-card-hover);
+        color: var(--text-primary);
+        border-color: rgba(14, 165, 233, 0.3);
+      }
     }
 
     .unit-nav-item.active {
@@ -520,6 +533,7 @@
     .mobile-unit-picker-wrapper {
       display: none;
       margin-bottom: 1.25rem;
+      width: 100%;
     }
 
     .mobile-unit-picker-label {
@@ -554,10 +568,14 @@
       -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 2rem;
-      font-size: 0.98rem;
+      padding: 2.25rem;
+      font-size: 1rem;
       line-height: 1.85;
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: break-word;
       word-break: break-word;
+      box-shadow: var(--shadow-sm);
     }
 
     .unit-content h2 {
@@ -571,15 +589,22 @@
 
     .unit-content h3 {
       font-size: 1.2rem;
-      margin: 1.5rem 0 0.6rem 0;
+      margin: 1.6rem 0 0.6rem 0;
       color: var(--accent-primary);
     }
 
     .unit-content h4 {
       font-size: 1.02rem;
-      margin: 1.2rem 0 0.4rem 0;
+      margin: 1.3rem 0 0.4rem 0;
       color: var(--accent-secondary);
       font-weight: 700;
+    }
+
+    .unit-content p,
+    .unit-content ul,
+    .unit-content ol,
+    .unit-content blockquote {
+      max-width: 860px; /* Typographic measure: ~70-80 CPL */
     }
 
     .unit-content p {
@@ -597,17 +622,37 @@
       margin-bottom: 0.45rem;
     }
 
-    /* Table Styles */
+    /* Visual Flow Containers & Diagrams */
+    .visual-flow-wrapper {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.35rem 0;
+    }
+
+    .visual-flow-wrapper > div {
+      max-width: 100%;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    /* Table Styles with Touch Scroll & Zero Track Blowout */
     .table-container {
+      width: 100%;
+      max-width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       border-radius: var(--btn-radius);
       border: 1px solid var(--border-color);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-secondary);
+      box-shadow: var(--shadow-sm);
     }
 
     table.data-table {
       width: 100%;
+      min-width: 560px;
       border-collapse: collapse;
       text-align: left;
       font-size: 0.88rem;
@@ -1101,8 +1146,8 @@
        MEDIA QUERIES: SMARTPHONE & TABLET RESPONSIVE COMPATIBILITY
        ========================================================================== */
     
-    /* 1. COMPACT PHONES & STANDARD MOBILE (iPhone SE, iPhone 12-16, Android, Galaxy, Pixel <= 768px) */
-    @media (max-width: 768px) {
+    /* 1. COMPACT PHONES & STANDARD MOBILE (iPhone SE, iPhone 12-16, Android, Galaxy, Pixel <= 767px, iPad Split View) */
+    @media (max-width: 767px) {
       header {
         padding: calc(0.5rem + var(--sat)) calc(0.85rem + var(--sar)) 0.5rem calc(0.85rem + var(--sal));
       }
@@ -1115,7 +1160,7 @@
       }
 
       .brand-titles h1 {
-        font-size: 0.94rem;
+        font-size: 0.92rem;
       }
 
       .brand-titles p {
@@ -1137,13 +1182,15 @@
       }
 
       main {
-        padding-top: 1rem;
-        padding-bottom: calc(5rem + var(--sab)); /* Prevent content from hiding behind bottom bar */
+        padding: 0.85rem calc(0.75rem + var(--sar)) calc(5.5rem + var(--sab)) calc(0.75rem + var(--sal));
+        width: 100%;
+        max-width: 100%;
       }
 
       /* Mobile Unit Picker */
       .mobile-unit-picker-wrapper {
         display: block;
+        margin-bottom: 1rem;
       }
 
       .unit-sidebar {
@@ -1151,28 +1198,61 @@
       }
 
       .lesson-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 0;
+        width: 100%;
       }
 
       .unit-content {
-        padding: 1.25rem 1rem;
+        padding: 1.25rem 0.95rem;
         font-size: 0.94rem;
         line-height: 1.75;
+        border-radius: 12px;
       }
 
       .unit-content h2 {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.35;
+      }
+
+      .unit-content h3 {
+        font-size: 1.1rem;
+        margin: 1.2rem 0 0.5rem 0;
+      }
+
+      .unit-content h4 {
+        font-size: 0.98rem;
+        margin: 1rem 0 0.35rem 0;
+      }
+
+      .unit-content p,
+      .unit-content ul,
+      .unit-content ol,
+      .unit-content blockquote {
+        max-width: 100%;
       }
 
       .glass-card {
-        padding: 1.15rem 0.95rem;
+        padding: 1.15rem 0.85rem;
         border-radius: 12px;
+        margin-bottom: 1rem;
+      }
+
+      .card-header {
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.6rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
       }
 
       /* Mobile Flashcards */
       .flashcard-wrapper {
-        height: 290px;
+        height: 310px;
+        max-width: 100%;
+        margin: 1rem auto;
       }
 
       .flashcard-face {
@@ -1180,7 +1260,7 @@
       }
 
       .flashcard-title {
-        font-size: 1.12rem;
+        font-size: 1.1rem;
       }
 
       .flashcard-desc {
@@ -1208,17 +1288,33 @@
         padding: 0.75rem 0.85rem;
         font-size: 0.8rem;
       }
+
+      .glossary-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    /* 2. TABLET PORTRAIT & SMALL TABLETS (iPad Mini, iPad 10.2", Galaxy Tab 769px – 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
+    /* 2. TABLET PORTRAIT & SMALL TABLETS (iPad Mini, iPad 10.2", iPad Air 768px – 1024px) */
+    @media (min-width: 768px) and (max-width: 1024px) {
       .lesson-grid {
-        grid-template-columns: 250px 1fr;
+        grid-template-columns: 240px minmax(0, 1fr);
         gap: 1.2rem;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .unit-sidebar {
+        display: flex;
+        top: 5rem;
+      }
+
+      .mobile-unit-picker-wrapper {
+        display: none;
       }
 
       .unit-content {
-        padding: 1.75rem;
+        padding: 1.75rem 1.4rem;
+        font-size: 0.96rem;
       }
 
       .exam-nav-grid {
@@ -1236,6 +1332,13 @@
 
     /* 3. TABLET LANDSCAPE & DESKTOP (> 1024px, iPad Pro Landscape, Mac, Windows) */
     @media (min-width: 1025px) {
+      .lesson-grid {
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+      }
+
       .mobile-bottom-nav {
         display: none;
       }
