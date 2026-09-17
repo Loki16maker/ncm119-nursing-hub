@@ -188,28 +188,24 @@
     }
 
     /* ==========================================================================
-       PERSISTENT COURSE MODULE SWITCHER BAR (TOUCH SCROLLER)
+       MODULE SELECTOR SYSTEM (DESKTOP GRID + MOBILE QUICK-SWITCH + ACTION SHEET)
        ========================================================================== */
     .module-selector-bar {
-      background: linear-gradient(90deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
-      border-bottom: 2px solid var(--border-color);
-      padding: 0.55rem calc(1rem + var(--sar)) 0.55rem calc(1rem + var(--sal));
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.6rem calc(1.25rem + var(--sar)) 0.6rem calc(1.25rem + var(--sal));
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    .module-selector-bar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .module-bar-title {
+    .module-bar-left {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       font-size: 0.74rem;
       font-weight: 800;
       color: var(--accent-primary);
@@ -220,8 +216,8 @@
     }
 
     .pulse-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       background-color: var(--accent-secondary);
       border-radius: 50%;
       box-shadow: 0 0 8px var(--accent-secondary);
@@ -234,76 +230,427 @@
       100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    .module-nav-grid {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-shrink: 0;
+    /* Desktop & Tablet Segmented Module Grid (4 columns) */
+    .module-desktop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
+      flex: 1;
+      max-width: 1050px;
     }
 
-    .mod-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 0.45rem 0.85rem;
+    .mod-seg-btn {
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 11px;
+      padding: 0.5rem 0.75rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.55rem;
       text-align: left;
-      transition: all var(--transition-fast);
-      white-space: nowrap;
-      min-height: 44px;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      min-height: 48px;
       touch-action: manipulation;
+      position: relative;
+      overflow: hidden;
     }
 
-    .mod-btn:active {
-      transform: scale(0.96);
+    .mod-seg-btn:active {
+      transform: scale(0.97);
     }
 
-    .mod-btn.active {
-      background: rgba(14, 165, 233, 0.18);
+    @media (hover: hover) and (pointer: fine) {
+      .mod-seg-btn:hover {
+        border-color: rgba(14, 165, 233, 0.4);
+        background: var(--bg-card-hover);
+      }
+    }
+
+    .mod-seg-btn.active {
+      background: rgba(14, 165, 233, 0.15);
       border-color: var(--accent-primary);
-      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.35);
+      box-shadow: 0 0 0 1.5px rgba(14, 165, 233, 0.35), 0 4px 12px rgba(14, 165, 233, 0.2);
     }
 
-    .mod-btn-tag {
-      background: rgba(148, 163, 184, 0.15);
+    .seg-badge {
+      background: rgba(148, 163, 184, 0.18);
       color: var(--text-primary);
-      padding: 0.2rem 0.4rem;
-      border-radius: 5px;
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
       font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.04em;
+      flex-shrink: 0;
     }
 
-    .mod-btn.active .mod-btn-tag {
+    .mod-seg-btn.active .seg-badge {
       background: var(--accent-primary);
       color: #ffffff;
     }
 
-    .mod-btn-content {
+    .seg-info {
       display: flex;
       flex-direction: column;
+      min-width: 0;
     }
 
-    .mod-btn-name {
-      font-size: 0.82rem;
+    .seg-name {
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .mod-btn-status {
+    .seg-status {
       font-size: 0.68rem;
       font-weight: 600;
       color: var(--accent-secondary);
       display: flex;
       align-items: center;
       gap: 0.3rem;
+      white-space: nowrap;
     }
 
-    .mod-btn.pending .mod-btn-status {
+    .mod-seg-btn.pending .seg-status {
       color: var(--accent-warning);
+    }
+
+    /* Mobile Quick-Switch Controller (Visible <= 767px) */
+    .module-mobile-bar {
+      display: none;
+      width: 100%;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mobile-mod-quick-btn {
+      flex: 1;
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.55rem 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      min-height: 44px;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      touch-action: manipulation;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-mod-quick-btn:active {
+      transform: scale(0.96);
+    }
+
+    .mobile-mod-quick-btn.active {
+      background: rgba(14, 165, 233, 0.16);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      box-shadow: 0 0 0 1px var(--accent-primary);
+    }
+
+    .mobile-all-mods-btn {
+      background: var(--bg-card);
+      border: 1.5px dashed var(--accent-primary);
+      border-radius: 10px;
+      padding: 0.55rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      min-height: 44px;
+      white-space: nowrap;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      touch-action: manipulation;
+    }
+
+    .mobile-all-mods-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Header Module Switcher Pill Button */
+    .header-module-pill {
+      background: rgba(14, 165, 233, 0.12);
+      border: 1.5px solid rgba(14, 165, 233, 0.35);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      min-height: 38px;
+      touch-action: manipulation;
+    }
+
+    .header-module-pill:active {
+      transform: scale(0.96);
+    }
+
+    .pill-badge {
+      background: var(--accent-primary);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pill-chevron {
+      font-size: 0.75rem;
+      color: var(--accent-primary);
+    }
+
+    /* Full-Screen / Bottom Sheet Module Picker Modal */
+    .module-picker-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 3500;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .module-picker-overlay.show {
+      display: flex;
+      animation: fadeIn 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .module-picker-sheet {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 18px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .sheet-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .sheet-title-group p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .sheet-close-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      touch-action: manipulation;
+    }
+
+    .sheet-close-btn:active {
+      transform: scale(0.92);
+    }
+
+    .module-picker-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .module-picker-card {
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+      cursor: pointer;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      touch-action: manipulation;
+      position: relative;
+    }
+
+    .module-picker-card:active {
+      transform: scale(0.98);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .module-picker-card:hover {
+        border-color: var(--accent-primary);
+        box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2);
+      }
+    }
+
+    .module-picker-card.active {
+      border-color: var(--accent-primary);
+      background: rgba(14, 165, 233, 0.12);
+      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.35), 0 8px 24px rgba(14, 165, 233, 0.2);
+    }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-mod-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--accent-primary);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .picker-card-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .picker-card-badge.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-secondary);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .picker-card-badge.ready {
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--accent-primary);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+
+    .picker-card-badge.queued {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-warning);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .picker-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    .picker-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .picker-card-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .metric-pill {
+      background: rgba(148, 163, 184, 0.1);
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    .picker-action-btn {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      touch-action: manipulation;
+    }
+
+    .module-picker-card.active .picker-action-btn {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--accent-secondary);
+      color: var(--accent-secondary);
+    }
+
+    .module-picker-card:not(.active) .picker-action-btn {
+      background: var(--accent-primary);
+      color: #ffffff;
+    }
+
+    .module-picker-card.queued .picker-action-btn {
+      background: var(--bg-card);
+      border-color: var(--border-color);
+      color: var(--text-muted);
     }
 
     /* Main Desktop Navigation Tabs (Visible on >= 769px) */
@@ -1292,6 +1639,42 @@
       .glossary-grid {
         grid-template-columns: 1fr;
       }
+
+      /* Module Selector on Mobile */
+      .module-desktop-grid {
+        display: none;
+      }
+
+      .module-mobile-bar {
+        display: flex;
+      }
+
+      .module-bar-left {
+        display: none;
+      }
+
+      .module-selector-bar {
+        padding: 0.5rem calc(0.75rem + var(--sar)) 0.5rem calc(0.75rem + var(--sal));
+      }
+
+      .pill-name {
+        display: none;
+      }
+
+      .header-module-pill {
+        padding: 0.25rem 0.5rem;
+      }
+
+      .module-picker-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .module-picker-sheet {
+        border-radius: 20px 20px 0 0;
+        margin-top: auto;
+        max-height: 85vh;
+        padding: 1.25rem 1rem;
+      }
     }
 
     /* 2. TABLET PORTRAIT & SMALL TABLETS (iPad Mini, iPad 10.2", iPad Air 768px – 1024px) */
@@ -1365,6 +1748,14 @@
       </div>
     </div>
     <div class="header-controls">
+      <!-- Quick Module Switcher Pill in Header -->
+      <button class="header-module-pill" id="header-module-pill" onclick="openModulePickerModal()" title="Switch Course Module (1-4)">
+        <span class="pulse-dot"></span>
+        <span class="pill-badge" id="pill-badge-text">MOD 1</span>
+        <span class="pill-name" id="pill-name-text">Leadership</span>
+        <span class="pill-chevron">▾</span>
+      </button>
+
       <div class="score-badge" id="global-score-badge">
         <span>🎯 Target:</span>
         <strong id="live-target-tracker">35–40 / 40</strong>
@@ -1373,43 +1764,58 @@
     </div>
   </header>
 
-  <!-- Persistent Course Module Switcher Bar -->
+  <!-- Course Module Switcher Bar (Responsive Segmented Grid on Desktop/Tablet + Quick Bar on Mobile) -->
   <div class="module-selector-bar">
-    <div class="module-bar-title">
+    <div class="module-bar-left">
       <div class="pulse-dot"></div>
       <span>Select Module:</span>
     </div>
-    <div class="module-nav-grid">
-      <button class="mod-btn active" id="mod-btn-1" onclick="switchActiveModule(1)">
-        <span class="mod-btn-tag">MOD 1</span>
-        <div class="mod-btn-content">
-          <span class="mod-btn-name">Leadership vs. Management</span>
-          <span class="mod-btn-status">● Ready / Active</span>
+
+    <!-- Desktop & Tablet Segmented 4-Column Grid -->
+    <div class="module-desktop-grid">
+      <button class="mod-seg-btn active" id="seg-mod-1" data-mod="1" onclick="switchActiveModule(1)">
+        <span class="seg-badge">MOD 1</span>
+        <div class="seg-info">
+          <span class="seg-name">Leadership vs. Management</span>
+          <span class="seg-status">● Ready / Active</span>
         </div>
       </button>
 
-      <button class="mod-btn" id="mod-btn-2" onclick="switchActiveModule(2)">
-        <span class="mod-btn-tag">MOD 2</span>
-        <div class="mod-btn-content">
-          <span class="mod-btn-name">Care Delivery Systems</span>
-          <span class="mod-btn-status">● Ready / Active</span>
+      <button class="mod-seg-btn" id="seg-mod-2" data-mod="2" onclick="switchActiveModule(2)">
+        <span class="seg-badge">MOD 2</span>
+        <div class="seg-info">
+          <span class="seg-name">Care Delivery Systems</span>
+          <span class="seg-status">● Ready / Active</span>
         </div>
       </button>
 
-      <button class="mod-btn pending" id="mod-btn-3" onclick="showUpcomingModal(3)">
-        <span class="mod-btn-tag">MOD 3</span>
-        <div class="mod-btn-content">
-          <span class="mod-btn-name">Upcoming Module</span>
-          <span class="mod-btn-status">⏳ Ingestion Ready</span>
+      <button class="mod-seg-btn pending" id="seg-mod-3" data-mod="3" onclick="showUpcomingModal(3)">
+        <span class="seg-badge">MOD 3</span>
+        <div class="seg-info">
+          <span class="seg-name">Upcoming Module</span>
+          <span class="seg-status">⏳ Ingestion Ready</span>
         </div>
       </button>
 
-      <button class="mod-btn pending" id="mod-btn-4" onclick="showUpcomingModal(4)">
-        <span class="mod-btn-tag">MOD 4</span>
-        <div class="mod-btn-content">
-          <span class="mod-btn-name">Upcoming Module</span>
-          <span class="mod-btn-status">⏳ Ingestion Ready</span>
+      <button class="mod-seg-btn pending" id="seg-mod-4" data-mod="4" onclick="showUpcomingModal(4)">
+        <span class="seg-badge">MOD 4</span>
+        <div class="seg-info">
+          <span class="seg-name">Upcoming Module</span>
+          <span class="seg-status">⏳ Ingestion Ready</span>
         </div>
+      </button>
+    </div>
+
+    <!-- Mobile Quick-Switch Controller (Visible <= 767px) -->
+    <div class="module-mobile-bar">
+      <button class="mobile-mod-quick-btn active" id="mobile-quick-mod-1" data-mod="1" onclick="switchActiveModule(1)">
+        <span>⚕️ Mod 1: Leadership</span>
+      </button>
+      <button class="mobile-mod-quick-btn" id="mobile-quick-mod-2" data-mod="2" onclick="switchActiveModule(2)">
+        <span>🩺 Mod 2: Care Delivery</span>
+      </button>
+      <button class="mobile-all-mods-btn" onclick="openModulePickerModal()" title="View All Modules">
+        <span>All (4) ▾</span>
       </button>
     </div>
   </div>
@@ -1616,11 +2022,96 @@
     </button>
   </div>
 
+  <!-- Master Module Selection Action Sheet / Modal -->
+  <div class="module-picker-overlay" id="module-picker-modal" onclick="onModulePickerOverlayClick(event)">
+    <div class="module-picker-sheet" onclick="event.stopPropagation()">
+      <div class="sheet-header">
+        <div class="sheet-title-group">
+          <h2>📚 Course Curriculum Modules</h2>
+          <p>Switch between active textbook modules or inspect upcoming course units</p>
+        </div>
+        <button class="sheet-close-btn" onclick="closeModulePickerModal()" title="Close">✕</button>
+      </div>
+
+      <div class="module-picker-cards-grid">
+        <!-- Mod 1 Card -->
+        <div class="module-picker-card active" id="picker-card-1" data-mod="1" onclick="switchActiveModule(1)">
+          <div class="card-top-row">
+            <span class="card-mod-num">MODULE 01</span>
+            <span class="picker-card-badge active">✓ Currently Active</span>
+          </div>
+          <div class="picker-card-title">Leadership vs. Management</div>
+          <div class="picker-card-desc">Theoretical foundations, Lewin's styles, Blake & Mouton grid, Maslow & Herzberg motivation, Goleman EQ, and Mintzberg roles.</div>
+          <div class="picker-card-metrics">
+            <span class="metric-pill">📖 10 Lessons</span>
+            <span class="metric-pill">🔀 5 Matrices</span>
+            <span class="metric-pill">🗂️ 32 Cards</span>
+            <span class="metric-pill">🔍 12 Quizzes</span>
+            <span class="metric-pill">🎓 40 Exam Items</span>
+          </div>
+          <button class="picker-action-btn">✓ Loaded / In Study</button>
+        </div>
+
+        <!-- Mod 2 Card -->
+        <div class="module-picker-card" id="picker-card-2" data-mod="2" onclick="switchActiveModule(2)">
+          <div class="card-top-row">
+            <span class="card-mod-num">MODULE 02</span>
+            <span class="picker-card-badge ready">● Ready to Study</span>
+          </div>
+          <div class="picker-card-title">Nursing Care Delivery Systems</div>
+          <div class="picker-card-desc">Total Patient Care, Functional Nursing, Team Nursing, Primary Nursing, Nursing Case Management, and Orlando Deliberative Process.</div>
+          <div class="picker-card-metrics">
+            <span class="metric-pill">📖 6 Lessons</span>
+            <span class="metric-pill">🔀 Master Matrix</span>
+            <span class="metric-pill">🗂️ 8 Cards</span>
+            <span class="metric-pill">🔍 4 Quizzes</span>
+            <span class="metric-pill">🎓 40 Exam Items</span>
+          </div>
+          <button class="picker-action-btn">Switch to Module 2 ➔</button>
+        </div>
+
+        <!-- Mod 3 Card -->
+        <div class="module-picker-card queued" id="picker-card-3" data-mod="3" onclick="showUpcomingModal(3)">
+          <div class="card-top-row">
+            <span class="card-mod-num">MODULE 03</span>
+            <span class="picker-card-badge queued">⏳ Ingestion Ready</span>
+          </div>
+          <div class="picker-card-title">Course Module 03</div>
+          <div class="picker-card-desc">Architecture and database structures standing by. Upload lecture PDF or slides to generate complete unabridged units.</div>
+          <div class="picker-card-metrics">
+            <span class="metric-pill">⚡ Standing By</span>
+            <span class="metric-pill">📑 Awaiting Ingestion</span>
+          </div>
+          <button class="picker-action-btn">Inspect Status</button>
+        </div>
+
+        <!-- Mod 4 Card -->
+        <div class="module-picker-card queued" id="picker-card-4" data-mod="4" onclick="showUpcomingModal(4)">
+          <div class="card-top-row">
+            <span class="card-mod-num">MODULE 04</span>
+            <span class="picker-card-badge queued">⏳ Ingestion Ready</span>
+          </div>
+          <div class="picker-card-title">Course Module 04</div>
+          <div class="picker-card-desc">Architecture and database structures standing by. Upload lecture PDF or slides to generate complete unabridged units.</div>
+          <div class="picker-card-metrics">
+            <span class="metric-pill">⚡ Standing By</span>
+            <span class="metric-pill">📑 Awaiting Ingestion</span>
+          </div>
+          <button class="picker-action-btn">Inspect Status</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Mobile "More" Sheet Modal -->
   <div class="modal-overlay" id="more-modal" onclick="closeMoreSheet()">
     <div class="modal-box" onclick="event.stopPropagation()">
       <h3 class="modal-title" style="margin-bottom: 1.25rem;">📚 Additional Study Tools</h3>
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <button class="btn btn-secondary" style="width: 100%; justify-content: flex-start; padding: 0.9rem; border-color: var(--accent-primary);" onclick="closeMoreSheet(); openModulePickerModal();">
+          <span style="font-size: 1.25rem;">📦</span>
+          <span>Switch Course Module (1–4)</span>
+        </button>
         <button class="btn btn-secondary" style="width: 100%; justify-content: flex-start; padding: 0.9rem;" onclick="switchMobileTab('tab-mindmap'); closeMoreSheet();">
           <span style="font-size: 1.25rem;">🌳</span>
           <span>Interactive Curricular Mindmap</span>
@@ -3572,18 +4063,73 @@
     }
 
     /* ==========================================================================
-       MODULE SWITCHING ENGINE
+       MODULE SWITCHING ENGINE & ACTION SHEET CONTROLLERS
        ========================================================================== */
+    function openModulePickerModal() {
+      const modal = document.getElementById('module-picker-modal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeModulePickerModal() {
+      const modal = document.getElementById('module-picker-modal');
+      if (modal) modal.classList.remove('show');
+    }
+
+    function onModulePickerOverlayClick(e) {
+      if (e.target.id === 'module-picker-modal') {
+        closeModulePickerModal();
+      }
+    }
+
     function switchActiveModule(modId) {
+      if (modId === 3 || modId === 4) {
+        showUpcomingModal(modId);
+        return;
+      }
       if (!MODULES_DATA[modId]) return;
       currentModuleId = modId;
       localStorage.setItem('ncm119_active_mod', modId);
       const mod = MODULES_DATA[modId];
 
-      // Update module nav buttons
-      document.querySelectorAll('.mod-btn').forEach(b => b.classList.remove('active'));
-      const activeBtn = document.getElementById(`mod-btn-${modId}`);
-      if (activeBtn) activeBtn.classList.add('active');
+      // Update Desktop Segmented Buttons
+      document.querySelectorAll('.mod-seg-btn').forEach(b => {
+        const bMod = parseInt(b.getAttribute('data-mod'));
+        b.classList.toggle('active', bMod === modId);
+      });
+
+      // Update Mobile Quick-Switch Buttons
+      document.querySelectorAll('.mobile-mod-quick-btn').forEach(b => {
+        const bMod = parseInt(b.getAttribute('data-mod'));
+        b.classList.toggle('active', bMod === modId);
+      });
+
+      // Update Header Pill
+      const pillBadge = document.getElementById('pill-badge-text');
+      if (pillBadge) pillBadge.textContent = `MOD ${modId}`;
+      const pillName = document.getElementById('pill-name-text');
+      if (pillName) pillName.textContent = modId === 1 ? 'Leadership' : 'Care Delivery';
+
+      // Update Cards in Master Module Picker Sheet
+      document.querySelectorAll('.module-picker-card').forEach(c => {
+        const cMod = parseInt(c.getAttribute('data-mod'));
+        c.classList.toggle('active', cMod === modId);
+        const badge = c.querySelector('.picker-card-badge');
+        const actionBtn = c.querySelector('.picker-action-btn');
+        if (badge) {
+          if (cMod === modId) {
+            badge.className = 'picker-card-badge active';
+            badge.textContent = '✓ CURRENTLY ACTIVE';
+            if (actionBtn) actionBtn.textContent = '✓ Loaded / In Study';
+          } else if (cMod <= 2) {
+            badge.className = 'picker-card-badge ready';
+            badge.textContent = '● READY TO STUDY';
+            if (actionBtn) actionBtn.textContent = `Switch to Module ${cMod} ➔`;
+          }
+        }
+      });
+
+      // Close Module Picker Modal if open
+      closeModulePickerModal();
 
       // Update Header Titles
       document.getElementById('header-course-title').textContent = `NCM 119: ${mod.title}`;
@@ -3622,7 +4168,8 @@
     }
 
     function closeUpcomingModal() {
-      document.getElementById('upcoming-modal').classList.remove('show');
+      const modal = document.getElementById('upcoming-modal');
+      if (modal) modal.classList.remove('show');
     }
 
     /* ==========================================================================
