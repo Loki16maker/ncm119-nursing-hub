@@ -1489,7 +1489,311 @@
       margin-top: auto;
     }
 
-    /* ==========================================================================
+        /* ==========================================================================
+       STUDENT MEMORY ENGINE & PROGRESS TRACKER STYLES
+       ========================================================================== */
+    /* 1. Syllabus Progress Bar & Checklist */
+    .syllabus-progress-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .syllabus-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .syllabus-progress-stats {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--accent-secondary);
+      background: rgba(16, 185, 129, 0.12);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 10px;
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 999px;
+      transition: width 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Unit Completion Card */
+    .unit-complete-card {
+      margin-top: 2.25rem;
+      padding: 1.25rem;
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--card-radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .unit-complete-status {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .unit-complete-icon {
+      font-size: 1.8rem;
+    }
+
+    .unit-complete-btn {
+      padding: 0.7rem 1.35rem;
+      border-radius: var(--btn-radius);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      touch-action: manipulation;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1.5px solid var(--accent-secondary);
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-secondary);
+    }
+
+    .unit-complete-btn:active {
+      transform: scale(0.96);
+    }
+
+    .unit-complete-btn.completed {
+      background: var(--accent-secondary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .unit-nav-item .unit-check {
+      margin-left: auto;
+      color: var(--accent-secondary);
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .unit-nav-item.is-completed .unit-check {
+      display: inline-block;
+    }
+
+    /* 2. Flashcards Active-Recall Leitner System */
+    .fc-mastery-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+      padding: 0.65rem 0.9rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--btn-radius);
+    }
+
+    .fc-filter-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .fc-filter-btn {
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      min-height: 40px;
+      touch-action: manipulation;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .fc-filter-btn:active {
+      transform: scale(0.96);
+    }
+
+    .fc-filter-btn.active {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+      box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
+    }
+
+    .fc-mastery-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .fc-rate-btn {
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--btn-radius);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      touch-action: manipulation;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .fc-rate-btn:active {
+      transform: scale(0.96);
+    }
+
+    .fc-rate-learning {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1.5px solid rgba(239, 68, 68, 0.4);
+      color: var(--accent-danger);
+    }
+
+    .fc-rate-mastered {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1.5px solid rgba(16, 185, 129, 0.5);
+      color: var(--accent-secondary);
+    }
+
+    .fc-mastery-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-top: 0.4rem;
+    }
+
+    .fc-mastery-status-pill.mastered {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-secondary);
+      border: 1px solid var(--accent-secondary);
+    }
+
+    .fc-mastery-status-pill.learning {
+      background: rgba(148, 163, 184, 0.18);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    /* 3. Interactive Score Badge & Analytics Modal */
+    .score-badge-interactive {
+      cursor: pointer;
+      transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .score-badge-interactive:hover {
+      box-shadow: 0 0 0 2px var(--accent-primary);
+    }
+
+    .score-badge-interactive:active {
+      transform: scale(0.95);
+    }
+
+    .score-history-modal-box {
+      max-width: 620px;
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 2px solid var(--accent-primary);
+      border-radius: var(--card-radius);
+      padding: 1.75rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .score-history-summary {
+      display: flex;
+      gap: 0.85rem;
+      margin: 1.1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .score-stat-card {
+      flex: 1;
+      min-width: 120px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.85rem 0.75rem;
+      text-align: center;
+    }
+
+    .score-stat-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-primary);
+    }
+
+    .score-stat-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .score-history-list {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      max-height: 320px;
+      margin: 0.75rem 0 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding-right: 0.25rem;
+    }
+
+    .score-history-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+/* ==========================================================================
        MEDIA QUERIES: SMARTPHONE & TABLET RESPONSIVE COMPATIBILITY
        ========================================================================== */
     
@@ -1756,9 +2060,9 @@
         <span class="pill-chevron">▾</span>
       </button>
 
-      <div class="score-badge" id="global-score-badge">
-        <span>🎯 Target:</span>
-        <strong id="live-target-tracker">35–40 / 40</strong>
+      <div class="score-badge score-badge-interactive" id="global-score-badge" onclick="openScoreHistoryModal()" title="View Exam Score Progression & Analytics">
+        <span id="score-badge-label">🎯 Best:</span>
+        <strong id="live-target-tracker">-- / 40</strong>
       </div>
       <button class="theme-toggle-btn" id="theme-btn" title="Toggle Theme">🌓</button>
     </div>
@@ -1836,6 +2140,17 @@
 
     <!-- TAB 1: UNABRIDGED LESSON EXPLORER -->
     <section id="tab-lesson" class="tab-panel active">
+      <!-- Syllabus Reading Progress Bar -->
+      <div class="syllabus-progress-container" id="syllabus-progress-box">
+        <div class="syllabus-progress-header">
+          <span>📚 Syllabus Reading Completion:</span>
+          <span class="syllabus-progress-stats" id="syllabus-progress-stats">0 / 0 Units (0%)</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="syllabus-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
       <!-- Mobile Unit Dropdown Selector -->
       <div class="mobile-unit-picker-wrapper">
         <div class="mobile-unit-picker-label">
@@ -1896,11 +2211,27 @@
           <span class="badge badge-primary" id="flashcard-counter">Card 1 / 30</span>
         </div>
 
+        <!-- Leitner Mastery Filter & Live Counter -->
+        <div class="fc-mastery-toolbar">
+          <div class="fc-filter-group">
+            <button class="fc-filter-btn active" id="fc-filter-all" onclick="setFlashcardFilter('all')">
+              🗂️ All Cards (<span id="fc-count-all">0</span>)
+            </button>
+            <button class="fc-filter-btn" id="fc-filter-unmastered" onclick="setFlashcardFilter('unmastered')">
+              🎯 Unmastered (<span id="fc-count-unmastered">0</span>)
+            </button>
+          </div>
+          <div id="fc-mastery-pct-badge" style="font-size: 0.82rem; font-weight: 700; color: var(--accent-secondary);">
+            Mastery: 0 / 0 (0%)
+          </div>
+        </div>
+
         <div class="flashcard-wrapper" id="flashcard-box" onclick="flipFlashcard()">
           <div class="flashcard-inner">
             <div class="flashcard-face flashcard-front">
               <span class="flashcard-tag" id="fc-tag">Tag</span>
               <h3 class="flashcard-title" id="fc-front">Question Front</h3>
+              <div id="fc-mastery-status" class="fc-mastery-status-pill learning">⏳ Still Learning</div>
               <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.85rem;">(Tap to flip • Swipe left/right on mobile)</p>
             </div>
             <div class="flashcard-face flashcard-back">
@@ -1915,6 +2246,16 @@
           <button class="btn btn-primary" onclick="flipFlashcard()">🔄 Flip</button>
           <button class="btn btn-secondary" onclick="nextFlashcard()">Next →</button>
           <button class="btn btn-secondary" onclick="shuffleFlashcards()">🎲 Shuffle</button>
+        </div>
+
+        <!-- Leitner Rating Buttons -->
+        <div class="fc-mastery-actions">
+          <button class="fc-rate-btn fc-rate-learning" onclick="rateCurrentCard(false)" title="Mark as Still Learning">
+            ❌ Still Learning
+          </button>
+          <button class="fc-rate-btn fc-rate-mastered" onclick="rateCurrentCard(true)" title="Mark as Mastered">
+            ✅ Mastered
+          </button>
         </div>
       </div>
     </section>
@@ -2122,6 +2463,46 @@
         </button>
       </div>
       <button class="btn btn-primary" style="width: 100%; margin-top: 1.25rem;" onclick="closeMoreSheet()">Done</button>
+    </div>
+  </div>
+
+  <!-- Score History & Performance Analytics Modal -->
+  <div class="modal-overlay" id="score-history-modal" onclick="closeScoreHistoryModal()">
+    <div class="score-history-modal-box" onclick="event.stopPropagation()">
+      <div class="sheet-header" style="margin-bottom: 0.85rem;">
+        <div class="sheet-title-group">
+          <h2 style="font-size: 1.25rem;">📊 Exam Score Analytics & History</h2>
+          <p id="score-history-mod-title">Personal Best & Board Exam Progression</p>
+        </div>
+        <button class="sheet-close-btn" onclick="closeScoreHistoryModal()" title="Close">✕</button>
+      </div>
+
+      <div class="score-history-summary">
+        <div class="score-stat-card">
+          <div class="score-stat-num" id="stat-best-score">--</div>
+          <div class="score-stat-lbl">Personal Best</div>
+        </div>
+        <div class="score-stat-card">
+          <div class="score-stat-num" id="stat-total-attempts">0</div>
+          <div class="score-stat-lbl">Total Attempts</div>
+        </div>
+        <div class="score-stat-card">
+          <div class="score-stat-num" id="stat-avg-score">--</div>
+          <div class="score-stat-lbl">Average Score</div>
+        </div>
+      </div>
+
+      <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">
+        Attempt History Log:
+      </div>
+      <div class="score-history-list" id="score-history-list">
+        <!-- Populated dynamically -->
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: auto; padding-top: 0.85rem; border-top: 1px solid var(--border-color);">
+        <button class="btn btn-secondary" style="color: var(--accent-danger); font-size: 0.82rem;" onclick="clearExamHistory()">🗑️ Clear History</button>
+        <button class="btn btn-primary" onclick="closeScoreHistoryModal()">Done</button>
+      </div>
     </div>
   </div>
 
@@ -3959,17 +4340,44 @@
     };
 
     /* ==========================================================================
+       STUDENT PERSISTENT MEMORY STORAGE HELPER (SAFE LOCALSTORAGE)
+       ========================================================================== */
+    const MemoryStore = {
+      get(key, defaultVal) {
+        try {
+          const item = localStorage.getItem(key);
+          return item ? JSON.parse(item) : defaultVal;
+        } catch (e) {
+          return defaultVal;
+        }
+      },
+      set(key, val) {
+        try {
+          localStorage.setItem(key, JSON.stringify(val));
+        } catch (e) {}
+      }
+    };
+
+    /* ==========================================================================
        GLOBAL STATE & INITIALIZATION
        ========================================================================== */
     let currentModuleId = 1;
+    let currentUnitKey = null;
     let currentFlashcardIndex = 0;
     let currentFlashcards = [];
+    let currentFlashcardFilter = 'all'; // 'all' or 'unmastered'
     let currentExamIndex = 0;
     let currentExamQuestions = [];
     let userExamAnswers = {};
     let userQuizAnswers = {};
     let examTimeLeft = 45 * 60;
     let examTimerInterval = null;
+
+    // Persistent Memory State
+    let completedUnits = MemoryStore.get('ncm119_completed_units', {}); // { [modId]: ["unitKey", ...] }
+    let flashcardMastery = MemoryStore.get('ncm119_fc_mastery', {});     // { [modId]: [0, 2, ...] }
+    let examHistory = MemoryStore.get('ncm119_exam_history', []);        // [ { modId, score, total, pct, date, verdict } ]
+    let bestScores = MemoryStore.get('ncm119_best_scores', {});         // { [modId]: { score, total, pct } }
 
     document.addEventListener('DOMContentLoaded', () => {
       // Theme setup
@@ -3997,6 +4405,15 @@
 
       // Register Touch Swipe on Flashcards
       setupTouchSwipeGestures();
+
+      // Register Offline PWA Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(err => {
+            console.log('SW registration notice:', err);
+          });
+        });
+      }
     });
 
     /* Tab Switching Core (Syncs desktop tabs and mobile bottom bar) */
@@ -4156,6 +4573,10 @@
 
       // 7. Render Glossary
       renderGlossary(mod);
+
+      // 8. Update Memory Engine UI
+      updateUnitProgressUI();
+      updateHeaderScoreBadge();
     }
 
     function showUpcomingModal(modNum) {
@@ -4173,11 +4594,10 @@
     }
 
     /* ==========================================================================
-       1. LESSON EXPLORER CONTROLLER
+       1. LESSON EXPLORER & READING CHECKLIST CONTROLLER
        ========================================================================== */
     function renderLessonUnits(mod) {
       const sidebar = document.getElementById('unit-sidebar-container');
-      const display = document.getElementById('unit-display');
       const mobileSelect = document.getElementById('mobile-unit-select');
 
       sidebar.innerHTML = '';
@@ -4186,12 +4606,15 @@
       const unitKeys = Object.keys(mod.units);
       if (unitKeys.length === 0) return;
 
+      const completedList = completedUnits[currentModuleId] || [];
+
       unitKeys.forEach((key, index) => {
+        const isDone = completedList.includes(key);
         // Desktop / Tablet Sidebar button
         const btn = document.createElement('button');
-        btn.className = `unit-nav-item ${index === 0 ? 'active' : ''}`;
+        btn.className = `unit-nav-item ${index === 0 ? 'active' : ''} ${isDone ? 'is-completed' : ''}`;
         btn.setAttribute('data-unit', key);
-        btn.innerHTML = mod.units[key].title;
+        btn.innerHTML = `${mod.units[key].title} <span class="unit-check" style="${isDone ? 'display:inline;' : 'display:none;'}">✓</span>`;
         btn.addEventListener('click', () => {
           selectUnit(key);
         });
@@ -4200,8 +4623,8 @@
         // Mobile select option
         const opt = document.createElement('option');
         opt.value = key;
-        // Strip emoji or HTML tags for clean select option text
-        opt.textContent = mod.units[key].title.replace(/<[^>]*>/g, '');
+        const cleanTitle = mod.units[key].title.replace(/<[^>]*>/g, '');
+        opt.textContent = isDone ? `✓ ${cleanTitle}` : cleanTitle;
         mobileSelect.appendChild(opt);
       });
 
@@ -4212,6 +4635,7 @@
     function selectUnit(unitKey) {
       const mod = MODULES_DATA[currentModuleId];
       if (!mod || !mod.units[unitKey]) return;
+      currentUnitKey = unitKey;
 
       // Update sidebar active class
       document.querySelectorAll('.unit-nav-item').forEach(b => {
@@ -4222,13 +4646,102 @@
       const mobileSelect = document.getElementById('mobile-unit-select');
       if (mobileSelect) mobileSelect.value = unitKey;
 
-      // Render content
-      document.getElementById('unit-display').innerHTML = mod.units[unitKey].content;
+      // Render content with unit completion card appended
+      const unitCompleteMarkup = `
+        <div class="unit-complete-card">
+          <div class="unit-complete-status">
+            <div class="unit-complete-icon" id="unit-complete-icon">📖</div>
+            <div>
+              <h4 style="margin: 0; font-size: 0.98rem;" id="unit-complete-heading">Unit Reading Status</h4>
+              <p style="margin: 0.15rem 0 0 0; font-size: 0.82rem; color: var(--text-muted);" id="unit-complete-subtext">Mark this unit complete to update your overall syllabus meter</p>
+            </div>
+          </div>
+          <button class="unit-complete-btn" id="btn-toggle-unit-complete" onclick="toggleCurrentUnitCompletion()">
+            <span id="unit-complete-btn-icon">✓</span>
+            <span id="unit-complete-btn-text">Mark Unit as Completed</span>
+          </button>
+        </div>
+      `;
+
+      document.getElementById('unit-display').innerHTML = mod.units[unitKey].content + unitCompleteMarkup;
+      updateUnitProgressUI();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function onMobileUnitChange(unitKey) {
       selectUnit(unitKey);
+    }
+
+    function toggleCurrentUnitCompletion() {
+      if (!currentUnitKey) return;
+      if (!completedUnits[currentModuleId]) {
+        completedUnits[currentModuleId] = [];
+      }
+      const arr = completedUnits[currentModuleId];
+      const idx = arr.indexOf(currentUnitKey);
+      if (idx > -1) {
+        arr.splice(idx, 1);
+      } else {
+        arr.push(currentUnitKey);
+      }
+      MemoryStore.set('ncm119_completed_units', completedUnits);
+      updateUnitProgressUI();
+    }
+
+    function updateUnitProgressUI() {
+      const mod = MODULES_DATA[currentModuleId];
+      if (!mod) return;
+      const unitKeys = Object.keys(mod.units);
+      const completedList = completedUnits[currentModuleId] || [];
+      const completedCount = completedList.filter(k => unitKeys.includes(k)).length;
+      const totalUnits = unitKeys.length;
+      const pct = totalUnits > 0 ? Math.round((completedCount / totalUnits) * 100) : 0;
+
+      // Progress Bar
+      const statsEl = document.getElementById('syllabus-progress-stats');
+      if (statsEl) statsEl.textContent = `${completedCount} / ${totalUnits} Units (${pct}%)`;
+      const fillEl = document.getElementById('syllabus-progress-fill');
+      if (fillEl) fillEl.style.width = `${pct}%`;
+
+      // Sidebar & Mobile Select
+      unitKeys.forEach(k => {
+        const isDone = completedList.includes(k);
+        const navItem = document.querySelector(`.unit-nav-item[data-unit="${k}"]`);
+        if (navItem) {
+          navItem.classList.toggle('is-completed', isDone);
+          const checkSpan = navItem.querySelector('.unit-check');
+          if (checkSpan) checkSpan.style.display = isDone ? 'inline' : 'none';
+        }
+
+        const opt = document.querySelector(`#mobile-unit-select option[value="${k}"]`);
+        if (opt) {
+          const baseTitle = mod.units[k].title.replace(/<[^>]*>/g, '').replace(/^✓\s*/, '');
+          opt.textContent = isDone ? `✓ ${baseTitle}` : baseTitle;
+        }
+      });
+
+      // Unit display completion button
+      const isCurDone = currentUnitKey && completedList.includes(currentUnitKey);
+      const btnText = document.getElementById('unit-complete-btn-text');
+      const btnIcon = document.getElementById('unit-complete-btn-icon');
+      const toggleBtn = document.getElementById('btn-toggle-unit-complete');
+      const statusHead = document.getElementById('unit-complete-heading');
+      const statusIcon = document.getElementById('unit-complete-icon');
+      if (toggleBtn && btnText) {
+        if (isCurDone) {
+          toggleBtn.classList.add('completed');
+          btnIcon.textContent = '✓';
+          btnText.textContent = 'Completed (Tap to Undo)';
+          if (statusHead) statusHead.textContent = 'Unit Reading Completed!';
+          if (statusIcon) statusIcon.textContent = '✅';
+        } else {
+          toggleBtn.classList.remove('completed');
+          btnIcon.textContent = '○';
+          btnText.textContent = 'Mark Unit as Completed';
+          if (statusHead) statusHead.textContent = 'Unit Reading In Progress';
+          if (statusIcon) statusIcon.textContent = '📖';
+        }
+      }
     }
 
     /* ==========================================================================
@@ -4272,24 +4785,125 @@
     }
 
     /* ==========================================================================
-       4. ACTIVE-RECALL FLASHCARD CONTROLLER
+       4. ACTIVE-RECALL FLASHCARD CONTROLLER (LEITNER MASTERY SYSTEM)
        ========================================================================== */
     function renderFlashcards(mod) {
-      currentFlashcards = [...mod.flashcards];
+      currentFlashcardFilter = 'all';
       currentFlashcardIndex = 0;
+      const fAllBtn = document.getElementById('fc-filter-all');
+      const fUnBtn = document.getElementById('fc-filter-unmastered');
+      if (fAllBtn) fAllBtn.classList.add('active');
+      if (fUnBtn) fUnBtn.classList.remove('active');
+      applyFlashcardFilter();
+    }
+
+    function getMasteredCardsList(modId) {
+      return flashcardMastery[modId] || [];
+    }
+
+    function setFlashcardFilter(mode) {
+      currentFlashcardFilter = mode;
+      document.getElementById('fc-filter-all').classList.toggle('active', mode === 'all');
+      document.getElementById('fc-filter-unmastered').classList.toggle('active', mode === 'unmastered');
+      currentFlashcardIndex = 0;
+      applyFlashcardFilter();
+    }
+
+    function applyFlashcardFilter() {
+      const mod = MODULES_DATA[currentModuleId];
+      if (!mod) return;
+      const masteredList = getMasteredCardsList(currentModuleId);
+      const allWithIdx = mod.flashcards.map((c, i) => ({ ...c, origIdx: i }));
+
+      if (currentFlashcardFilter === 'unmastered') {
+        currentFlashcards = allWithIdx.filter(c => !masteredList.includes(c.origIdx));
+      } else {
+        currentFlashcards = allWithIdx;
+      }
+
+      if (currentFlashcardIndex >= currentFlashcards.length) {
+        currentFlashcardIndex = Math.max(0, currentFlashcards.length - 1);
+      }
+
       updateFlashcardDisplay();
+      updateFlashcardMasteryUI();
     }
 
     function updateFlashcardDisplay() {
       const box = document.getElementById('flashcard-box');
       box.classList.remove('flipped');
-      if (currentFlashcards.length === 0) return;
+
+      if (currentFlashcards.length === 0) {
+        document.getElementById('fc-tag').textContent = '🎉 Goal Achieved';
+        document.getElementById('fc-front').textContent = 'Outstanding! All cards in this module are marked as Mastered.';
+        document.getElementById('fc-back').textContent = 'Switch filter to "All Cards" or retake drills to test retention.';
+        document.getElementById('flashcard-counter').textContent = `0 / 0 Cards`;
+        const pill = document.getElementById('fc-mastery-status');
+        if (pill) {
+          pill.className = 'fc-mastery-status-pill mastered';
+          pill.textContent = '🏆 All Mastered';
+        }
+        return;
+      }
 
       const card = currentFlashcards[currentFlashcardIndex];
       document.getElementById('fc-tag').textContent = card.tag || 'High-Yield Core';
       document.getElementById('fc-front').textContent = card.front;
       document.getElementById('fc-back').textContent = card.back;
       document.getElementById('flashcard-counter').textContent = `Card ${currentFlashcardIndex + 1} / ${currentFlashcards.length}`;
+
+      const masteredList = getMasteredCardsList(currentModuleId);
+      const isMastered = masteredList.includes(card.origIdx);
+      const pill = document.getElementById('fc-mastery-status');
+      if (pill) {
+        pill.className = `fc-mastery-status-pill ${isMastered ? 'mastered' : 'learning'}`;
+        pill.textContent = isMastered ? '✅ Mastered' : '⏳ Still Learning';
+      }
+    }
+
+    function rateCurrentCard(mastered) {
+      if (currentFlashcards.length === 0) return;
+      const currentCard = currentFlashcards[currentFlashcardIndex];
+      if (!currentCard) return;
+
+      if (!flashcardMastery[currentModuleId]) {
+        flashcardMastery[currentModuleId] = [];
+      }
+      const origIdx = currentCard.origIdx;
+      const arr = flashcardMastery[currentModuleId];
+      const exists = arr.indexOf(origIdx);
+
+      if (mastered && exists === -1) {
+        arr.push(origIdx);
+      } else if (!mastered && exists > -1) {
+        arr.splice(exists, 1);
+      }
+
+      MemoryStore.set('ncm119_fc_mastery', flashcardMastery);
+      updateFlashcardMasteryUI();
+
+      if (currentFlashcardFilter === 'unmastered') {
+        applyFlashcardFilter();
+      } else {
+        nextFlashcard();
+      }
+    }
+
+    function updateFlashcardMasteryUI() {
+      const mod = MODULES_DATA[currentModuleId];
+      if (!mod) return;
+      const masteredList = getMasteredCardsList(currentModuleId);
+      const total = mod.flashcards.length;
+      const masteredCount = masteredList.length;
+      const unmasteredCount = Math.max(0, total - masteredCount);
+      const pct = total > 0 ? Math.round((masteredCount / total) * 100) : 0;
+
+      const countAll = document.getElementById('fc-count-all');
+      if (countAll) countAll.textContent = total;
+      const countUn = document.getElementById('fc-count-unmastered');
+      if (countUn) countUn.textContent = unmasteredCount;
+      const badge = document.getElementById('fc-mastery-pct-badge');
+      if (badge) badge.textContent = `Mastery: ${masteredCount} / ${total} (${pct}%)`;
     }
 
     function flipFlashcard() {
@@ -4539,11 +5153,114 @@
 
       summaryPanel.classList.add('show');
       summaryPanel.scrollIntoView({ behavior: 'smooth' });
+
+      // Record Attempt to Student Memory Engine
+      recordExamAttempt(currentModuleId, score, total, verdict.textContent);
     }
 
     function restartExamSimulator() {
       const mod = MODULES_DATA[currentModuleId];
       renderExamSimulator(mod);
+    }
+
+    /* ==========================================================================
+       6B. EXAM SCORE HISTORY & ANALYTICS CONTROLLER
+       ========================================================================== */
+    function recordExamAttempt(modId, score, total, verdictText) {
+      const pct = Math.round((score / total) * 100);
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ', ' +
+                      now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+      const entry = {
+        modId,
+        score,
+        total,
+        pct,
+        date: dateStr,
+        verdict: verdictText
+      };
+
+      examHistory.unshift(entry);
+      MemoryStore.set('ncm119_exam_history', examHistory);
+
+      // Check personal best for this module
+      if (!bestScores[modId] || score > bestScores[modId].score) {
+        bestScores[modId] = { score, total, pct };
+        MemoryStore.set('ncm119_best_scores', bestScores);
+      }
+
+      updateHeaderScoreBadge();
+    }
+
+    function updateHeaderScoreBadge() {
+      const best = bestScores[currentModuleId];
+      const tracker = document.getElementById('live-target-tracker');
+      const lbl = document.getElementById('score-badge-label');
+      if (best) {
+        if (lbl) lbl.textContent = '🎯 Best:';
+        if (tracker) tracker.textContent = `${best.score}/${best.total} (${best.pct}%)`;
+      } else {
+        if (lbl) lbl.textContent = '🎯 Target:';
+        if (tracker) tracker.textContent = '35–40 / 40';
+      }
+    }
+
+    function openScoreHistoryModal() {
+      const mod = MODULES_DATA[currentModuleId];
+      document.getElementById('score-history-mod-title').textContent = `Module ${currentModuleId}: ${mod.title}`;
+
+      const modAttempts = examHistory.filter(e => e.modId === currentModuleId);
+      const best = bestScores[currentModuleId];
+
+      document.getElementById('stat-best-score').textContent = best ? `${best.score}/${best.total} (${best.pct}%)` : '--';
+      document.getElementById('stat-total-attempts').textContent = modAttempts.length;
+
+      if (modAttempts.length > 0) {
+        const sum = modAttempts.reduce((acc, cur) => acc + cur.pct, 0);
+        const avg = Math.round(sum / modAttempts.length);
+        document.getElementById('stat-avg-score').textContent = `${avg}%`;
+      } else {
+        document.getElementById('stat-avg-score').textContent = '--';
+      }
+
+      const listEl = document.getElementById('score-history-list');
+      listEl.innerHTML = '';
+      if (modAttempts.length === 0) {
+        listEl.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 1.5rem 0;">No exam attempts recorded yet for this module. Complete a 40-item exam simulator to record your baseline!</div>';
+      } else {
+        modAttempts.forEach((att, idx) => {
+          const item = document.createElement('div');
+          item.className = 'score-history-item';
+          const isPass = att.score >= 30;
+          const isHigh = att.score >= 35;
+          const color = isHigh ? 'var(--accent-secondary)' : (isPass ? 'var(--accent-primary)' : 'var(--accent-warning)');
+          item.innerHTML = `
+            <div>
+              <div style="font-weight: 700; color: var(--text-primary); font-size: 0.92rem;">Attempt #${modAttempts.length - idx}: <span style="color: ${color};">${att.score} / ${att.total} (${att.pct}%)</span></div>
+              <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;">📅 ${att.date} • ${att.verdict}</div>
+            </div>
+            <span class="badge ${isHigh ? 'badge-success' : (isPass ? 'badge-primary' : 'badge-warning')}">${att.pct}%</span>
+          `;
+          listEl.appendChild(item);
+        });
+      }
+
+      document.getElementById('score-history-modal').classList.add('show');
+    }
+
+    function closeScoreHistoryModal() {
+      document.getElementById('score-history-modal').classList.remove('show');
+    }
+
+    function clearExamHistory() {
+      if (!confirm('Are you sure you want to clear your exam score history for this module?')) return;
+      examHistory = examHistory.filter(e => e.modId !== currentModuleId);
+      delete bestScores[currentModuleId];
+      MemoryStore.set('ncm119_exam_history', examHistory);
+      MemoryStore.set('ncm119_best_scores', bestScores);
+      updateHeaderScoreBadge();
+      openScoreHistoryModal();
     }
 
     /* ==========================================================================
